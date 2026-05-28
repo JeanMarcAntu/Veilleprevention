@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille Prévention — Cellule Prévention</title>
+<style>
+:root {
+  color-scheme: light;
+  --navy: #0d2240;
+  --blue: #1554a0;
+  --blue-light: #2d7dd2;
+  --blue-pale: #e8f1fb;
+  --green: #1a9460;
+  --green-pale: #e6f6ee;
+  --orange: #d97706;
+  --orange-pale: #fef3cd;
+  --red: #c0392b;
+  --red-pale: #fdecea;
+  --purple: #6d28d9;
+  --purple-pale: #ede9fe;
+  --teal: #0e7490;
+  --teal-pale: #e0f5f9;
+  --idea: #92400e;
+  --idea-bg: #fffbeb;
+  --idea-border: #f59e0b;
+  --bg: #f3f6fb;
+  --card: #ffffff;
+  --border: #dde4ef;
+  --text: #1a2035;
+  --muted: #5a6480;
+  --tag-h: 13px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.55; }
+
+/* NAV */
+.topnav { background: var(--navy); display: flex; align-items: center; gap: 0; overflow-x: auto; }
+.topnav a { color: rgba(255,255,255,.65); text-decoration: none; padding: 13px 18px; font-size: 12.5px; font-weight: 500; white-space: nowrap; border-bottom: 2px solid transparent; transition: all .15s; }
+.topnav a:hover, .topnav a.active { color: #fff; border-bottom-color: #60a5fa; }
+.topnav-brand { color: white; font-weight: 700; font-size: 13px; padding: 13px 20px; border-right: 1px solid rgba(255,255,255,.12); margin-right: 4px; white-space: nowrap; }
+
+/* HEADER */
+.header { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 100%); padding: 30px 36px 24px; }
+.header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+.header-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 7px; }
+.header h1 { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -.4px; line-height: 1.2; }
+.header-sub { color: rgba(255,255,255,.7); font-size: 13px; margin-top: 5px; }
+.header-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+.badge { border-radius: 6px; padding: 6px 13px; font-size: 12px; font-weight: 600; }
+.badge-edition { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); color: #fff; }
+.badge-next { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.55); font-size: 11px; }
+.intensity-bar { display: flex; align-items: center; gap: 10px; margin-top: 20px; }
+.intensity-label { font-size: 11px; color: rgba(255,255,255,.5); font-weight: 600; letter-spacing: .8px; text-transform: uppercase; }
+.intensity-dots { display: flex; gap: 5px; }
+.intensity-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.2); }
+.intensity-dot.on { background: #f59e0b; }
+.intensity-text { font-size: 12px; color: #f59e0b; font-weight: 600; }
+
+/* MAIN */
+.main { max-width: 1120px; margin: 0 auto; padding: 28px 22px 60px; }
+
+/* SECTION HEADERS */
+.section-head { display: flex; align-items: center; gap: 10px; margin: 36px 0 18px; }
+.section-num { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
+.num-red { background: var(--red-pale); color: var(--red); }
+.num-blue { background: var(--blue-pale); color: var(--blue); }
+.num-green { background: var(--green-pale); color: var(--green); }
+.num-purple { background: var(--purple-pale); color: var(--purple); }
+.num-teal { background: var(--teal-pale); color: var(--teal); }
+.section-head h2 { font-size: 17px; font-weight: 800; color: var(--navy); }
+.section-head .section-desc { font-size: 12.5px; color: var(--muted); margin-left: 4px; }
+.section-count { margin-left: auto; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2px 10px; font-size: 11.5px; color: var(--muted); font-weight: 500; }
+
+/* GRID */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 16px; }
+
+/* CARDS */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px; transition: box-shadow .15s; }
+.card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.08); }
+.card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { border-radius: 4px; padding: 2px 8px; font-size: var(--tag-h); font-weight: 600; letter-spacing: .3px; }
+.t-risk-eau { background: #dbeafe; color: #1d4ed8; }
+.t-risk-inond { background: #e0f2fe; color: #0369a1; }
+.t-risk-vol { background: #ede9fe; color: #5b21b6; }
+.t-risk-grele { background: #fce7f3; color: #9d174d; }
+.t-risk-feu { background: #fee2e2; color: #b91c1c; }
+.t-risk-rga { background: #fef9c3; color: #854d0e; }
+.t-equip { background: #d1fae5; color: #065f46; }
+.t-partenariat { background: #fef3cd; color: #92400e; }
+.t-lancement { background: #ede9fe; color: #5b21b6; }
+.t-reg { background: #fef3cd; color: #92400e; }
+.t-signal { background: #fee2e2; color: #991b1b; }
+.t-tech { background: #dbeafe; color: #1e40af; }
+card-date { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+.card-date { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+.card-title { font-size: 14.5px; font-weight: 700; color: var(--text); line-height: 1.35; }
+.card-body { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+.stat-box { background: var(--bg); border-radius: 7px; padding: 9px 13px; font-size: 12.5px; color: var(--muted); }
+.stat-box strong { color: var(--text); }
+.stat-box.blue { border-left: 3px solid var(--blue-light); }
+.stat-box.green { border-left: 3px solid var(--green); }
+.stat-box.orange { border-left: 3px solid var(--orange); }
+.stat-box.red { border-left: 3px solid var(--red); }
+.card-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11.5px; }
+.card-source { color: var(--muted); }
+.card-link { color: var(--blue-light); text-decoration: none; font-weight: 600; }
+.card-link:hover { text-decoration: underline; }
+
+/* IDEA BOX */
+.idea-box { background: var(--idea-bg); border: 1px solid var(--idea-border); border-left: 4px solid var(--idea-border); border-radius: 8px; padding: 12px 15px; font-size: 12.5px; color: var(--idea); line-height: 1.55; }
+.idea-box strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .8px; color: var(--orange); margin-bottom: 4px; }
+.idea-effort { display: inline-block; margin-top: 7px; background: #fff; border: 1px solid var(--idea-border); border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; color: var(--orange); }
+
+/* BENCHMARK */
+.benchmark-header { background: linear-gradient(135deg, #0d2240 0%, #164e63 100%); border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; color: white; }
+.benchmark-header h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+.benchmark-header p { font-size: 13px; color: rgba(255,255,255,.7); }
+.benchmark-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 16px; }
+.bkpi { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); border-radius: 8px; padding: 14px 16px; }
+.bkpi-val { font-size: 22px; font-weight: 800; color: white; line-height: 1; }
+.bkpi-unit { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.6); margin-left: 2px; }
+.bkpi-label { font-size: 11px; color: rgba(255,255,255,.55); margin-top: 5px; }
+
+.bench-table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; font-size: 13px; }
+.bench-table thead { background: var(--navy); color: white; }
+.bench-table thead th { padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; }
+.bench-table tbody tr { border-bottom: 1px solid var(--border); }
+.bench-table tbody tr:last-child { border-bottom: none; }
+.bench-table tbody tr:hover { background: var(--bg); }
+.bench-table td { padding: 12px 14px; vertical-align: middle; }
+.bench-table td:first-child { font-weight: 600; }
+.type-badge { display: inline-block; border-radius: 4px; padding: 2px 7px; font-size: 11px; font-weight: 600; }
+.tb-detect { background: #dbeafe; color: #1d4ed8; }
+.tb-vanne { background: #d1fae5; color: #065f46; }
+.tb-system { background: #ede9fe; color: #5b21b6; }
+.tb-service { background: #fef3cd; color: #92400e; }
+.stars { color: #f59e0b; letter-spacing: -1px; }
+.check { color: var(--green); font-weight: 700; }
+.cross { color: var(--muted); }
+
+/* REGLEMENTATION */
+.reg-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; display: flex; gap: 14px; }
+.reg-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.reg-icon.orange { background: var(--orange-pale); }
+.reg-icon.blue { background: var(--blue-pale); }
+.reg-icon.red { background: var(--red-pale); }
+.reg-content h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+.reg-content p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.reg-implication { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.impl-pill { border-radius: 20px; padding: 3px 10px; font-size: 11.5px; font-weight: 600; }
+.impl-assureur { background: var(--blue-pale); color: var(--blue); }
+.impl-assure { background: var(--green-pale); color: var(--green); }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); margin: 12px 0; }
+
+/* FOOTER */
+.footer { background: var(--navy); color: rgba(255,255,255,.5); padding: 16px 28px; display: flex; justify-content: space-between; align-items: center; font-size: 11.5px; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 640px) {
+  .header { padding: 20px 16px 18px; }
+  .main { padding: 16px 12px 40px; }
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .benchmark-kpis { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="topnav">
+  <div class="topnav-brand">Cellule Prévention</div>
+  <a href="#signaux" class="active">① Signaux forts</a>
+  <a href="#solutions">② Équipements & solutions</a>
+  <a href="#marche">③ Mouvements du marché</a>
+  <a href="#communication">④ Communication concurrents</a>
+  <a href="#reglementation">⑤ Réglementation</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-row">
+    <div>
+      <div class="header-eyebrow">Veille Prévention · Directions Produit, Marché & Marketing</div>
+      <h1>Prévention des risques particuliers</h1>
+      <div class="header-sub">Équipements · Partenariats · Innovations · Réglementation &nbsp;|&nbsp; Auto · MRH · Santé · Prévoyance</div>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-edition">Édition N°1 — Mai 2026</span>
+      <span class="badge badge-next">Prochaine mise à jour : 1er juin 2026</span>
+    </div>
+  </div>
+  <div class="intensity-bar">
+    <span class="intensity-label">Intensité</span>
+    <div class="intensity-dots">
+      <div class="intensity-dot on"></div>
+      <div class="intensity-dot on"></div>
+      <div class="intensity-dot on"></div>
+      <div class="intensity-dot"></div>
+      <div class="intensity-dot"></div>
+    </div>
+    <span class="intensity-text">Élevée — Actualité réglementaire et sinistralité fortes</span>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ① SIGNAUX FORTS -->
+<div id="signaux" class="section-head">
+  <div class="section-num num-red">①</div>
+  <h2>Signaux forts de la période</h2>
+  <span class="section-desc">— les faits qui comptent pour la prévention</span>
+  <span class="section-count">4 signaux</span>
+</div>
+
+<div class="grid-3">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-signal">Signal fort</span><span class="tag t-risk-inond">Inondation</span></div>
+      <span class="card-date">Mai 2026</span>
+    </div>
+    <div class="card-title">Loi Inondations du 19 mai 2026 : simplification et nouveaux leviers de prévention</div>
+    <div class="card-body">Promulguée il y a deux jours, la loi n°2026-381 simplifie les autorisations de travaux post-crue, facilite les servitudes sur terrains privés pour l'entretien des digues, et crée une réserve d'ingénierie pour aider les communes sinistrées. C'est le premier texte législatif majeur sur la prévention des inondations depuis des années.</div>
+    <div class="stat-box blue"><strong>80 %</strong> de financement Fonds Barnier pour les travaux en zone PPRI, jusqu'à 36 000 € par bien</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Créer un "diagnostic vulnérabilité inondation" offert aux assurés en zone PPRI, avec orientation vers les équipementiers partenaires (batardeaux) et aide au montage du dossier Fonds Barnier. Double valeur : fidélisation assuré + réduction sinistralité.
+      <span class="idea-effort">POC léger — 3 à 6 mois</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">Légifrance / Gazette des Communes</span>
+      <a class="card-link" href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054113360" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-signal">Signal fort</span><span class="tag t-risk-eau">Dégâts des eaux</span></div>
+      <span class="card-date">2025</span>
+    </div>
+    <div class="card-title">Dégâts des eaux : +18 % de sinistres en 2024, 1er poste de sinistralité MRH</div>
+    <div class="card-body">44 % des sinistres MRH déclarés en 2024 étaient des dégâts des eaux, pour 2,4 Md€ indemnisés — soit 30 % de la charge totale MRH. La fréquence est en hausse de 18 % par rapport à 2023. La tendance longue est structurellement haussière : parc immobilier vieillissant, épisodes pluvieux plus intenses. Le coût moyen par sinistre atteint 1 200 €.</div>
+    <div class="stat-box red"><strong>2,4 Md€</strong> indemnisés en 2024 — +18 % vs 2023 — tendance non inversée sans action préventive</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Proposer à la souscription un "pack prévention dégâts des eaux" : détecteur connecté offert ou subventionné (type Grohe Sense ou EcoSentry) avec réduction de franchise en cas d'équipement. Modèle déjà testé par LocalTapiola en Finlande : −70 % de coûts sinistres.
+      <span class="idea-effort">POC moyen — 6 à 12 mois</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">France Assureurs — L'assurance habitation en 2024</span>
+      <a class="card-link" href="https://www.franceassureurs.fr/nos-chiffres-cles/assurance-de-dommages-et-responsabilite/lassurance-habitation-en-2024/" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-signal">Signal fort</span><span class="tag t-risk-rga">Sécheresse / RGA</span></div>
+      <span class="card-date">Avr. 2026</span>
+    </div>
+    <div class="card-title">RGA : plus de 10 millions de maisons individuelles exposées, l'État lance une aide au diagnostic dans des départements pilotes</div>
+    <div class="card-body">Le retrait-gonflement des argiles représente 36 % des coûts d'indemnisation Cat Nat. Selon le Ministère de la Transition Écologique, 10,4 millions de maisons individuelles (54 % du parc individuel) sont exposées moyennement ou fortement au RGA — un chiffre qui pourrait atteindre 16 millions à horizon 2050. L'État a lancé un programme d'aide au diagnostic et aux travaux préventifs dans des départements pilotes.</div>
+    <div class="stat-box orange"><strong>+10 M</strong> de maisons individuelles exposées au RGA (aléa moyen à fort) — source : Ministère Transition Écologique 2023</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      À la déclaration d'un sinistre sécheresse/RGA, déclencher automatiquement un parcours "prévention rechute" : envoi d'un guide diagnostic RGA, lien vers Géorisques, et mise en relation avec un bureau d'études partenaire (ex. Ginger CEBTP). Réduit le risque de récidive et valorise l'accompagnement de l'assureur.
+      <span class="idea-effort">POC léger — 2 à 3 mois</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">Ministère Transition Écologique / Géorisques / Cerema</span>
+      <a class="card-link" href="https://www.statistiques.developpement-durable.gouv.fr/nouveau-zonage-dexposition-au-retrait-gonflement-des-argiles-plus-de-104-millions-de-maisons" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-signal">Signal fort</span><span class="tag t-risk-vol">Vol</span></div>
+      <span class="card-date">2025</span>
+    </div>
+    <div class="card-title">Fraude à l'assurance auto : +26 % en un an, 237 M€ détectés en 2023</div>
+    <div class="card-body">L'association Alfa recense 237 M€ de fraudes détectées en assurance auto en 2023, contre 188 M€ en 2022. Faux sinistres, staging d'accidents, fausses déclarations de vol : la fraude s'organise et pèse sur la sinistralité réelle. La prévention comportementale (télématique) et la vérification renforcée à la déclaration progressent.</div>
+    <div class="stat-box red"><strong>+26 %</strong> de fraudes détectées en auto en un an — impact direct sur le coût de la sinistralité</div>
+    <div class="card-foot">
+      <span class="card-source">Alfa / LeComparateurAssurance</span>
+      <a class="card-link" href="https://www.lecomparateurassurance.com/assurance-auto/actualites/barometre-assurance-auto-mai-2026" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ② ÉQUIPEMENTS & SOLUTIONS -->
+<div id="solutions" class="section-head">
+  <div class="section-num num-blue">②</div>
+  <h2>Nouveautés équipements & solutions</h2>
+  <span class="section-desc">— ce qui arrive sur le marché, par type de risque</span>
+  <span class="section-count">5 fiches</span>
+</div>
+
+<div class="grid-3">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-risk-eau">Dégâts des eaux</span><span class="tag t-equip">Équipement</span><span class="tag t-tech">Connecté</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Vannes connectées avec coupure automatique : le marché se structure</div>
+    <div class="card-body">Grohe Sense Guard, RE.GUARD (REHAU), Flo by Moen et EcoSentry proposent désormais des systèmes complets : capteurs sol + vanne motorisée sur canalisation principale + app mobile. Coupure automatique même sans connexion internet. Installation par plombier (1h, 150–250 €). Prix système : 400–500 €. Ces solutions s'adressent directement aux assureurs pour des offres couplées.</div>
+    <div class="stat-box green"><strong>−70 %</strong> de coûts sinistres dégâts des eaux observés chez l'assureur finlandais LocalTapiola avec Grohe</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Négocier un accord de distribution avec Grohe ou EcoSentry : subvention partielle du système à la souscription MRH, avec réduction de franchise en contrepartie. Le ROI sinistralité est documenté et le ticket d'entrée est faible.
+      <span class="idea-effort">POC moyen — partenariat à initier</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">GROHE (communiqué officiel) / RE.GUARD / EcoSentry</span>
+      <a class="card-link" href="https://www.grohe.com/en/corporate/news/category_news/pressreleases/pressrelease/a-smart-game-changer-grohe-sense-system-reduces-water-damage-costs-of-finnish-insurer-localtapiola-by-70-percent.html" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-risk-inond">Inondation</span><span class="tag t-tech">Tech</span></div>
+      <span class="card-date">2025</span>
+    </div>
+    <div class="card-title">Previsico : alertes inondations par ruissellement jusqu'à 48h à l'avance par adresse</div>
+    <div class="card-body">Cette start-up spécialisée prédit les inondations par ruissellement pluvial à l'échelle de la parcelle, avec 24 à 48h d'anticipation. Contrairement à Vigicrues (cours d'eau), elle couvre le ruissellement urbain — cause majeure de sinistres non couverts par les alertes officielles. Contrats avec des collectivités et des assureurs. Le service est disponible en API pour intégration dans des apps assureurs. <em>(⚠️ Présence en France à confirmer)</em></div>
+    <div class="stat-box blue">Ruissellement pluvial : une part significative des sinistres inondation non couverts par Vigicrues — <em>chiffre précis à vérifier</em></div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Intégrer l'API Previsico dans l'espace assuré : notification push 24h avant un épisode à risque à l'adresse du bien assuré, avec checklist de protection (mise hors sol, fermeture arrivée eau…). Valeur ajoutée forte, différenciant par rapport aux concurrents.
+      <span class="idea-effort">POC léger — intégration API</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">Previsico</span>
+      <a class="card-link" href="https://previsico.com" target="_blank">previsico.com ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-risk-vol">Vol</span><span class="tag t-equip">Équipement</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Ajax Systems : alarme Grade 2 en forte croissance, partenariats assureurs à confirmer</div>
+    <div class="card-body">Ajax Systems s'impose comme l'alternative aux offres avec abonnement (Verisure, 45 €/mois). Certifiée EN 50131 Grade 2 (équivalent NFA2P), elle est reconnue par certains assureurs pour des réductions de prime. Starter kit à 300–500 €, sans abonnement. La marque équipe déjà des centaines de milliers de foyers en Europe.</div>
+    <div class="stat-box"><strong>NFA2P niv. 2 / EN 50131 Grade 2</strong> : certification exigée pour réduction prime chez la plupart des assureurs MRH</div>
+    <div class="card-foot">
+      <span class="card-source">Ajax Systems / Comparatifs 2026</span>
+      <a class="card-link" href="https://ajax.systems/fr/" target="_blank">ajax.systems ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-risk-rga">Sécheresse / RGA</span><span class="tag t-tech">Tech</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Argile.ai : diagnostic RGA en ligne par adresse, accessible aux particuliers</div>
+    <div class="card-body">Argile.ai propose un outil de diagnostic du risque RGA à l'adresse, avec recommandations de travaux préventifs personnalisées. Il s'appuie sur les données BRGM et les données de sinistralité. Accessible directement par les particuliers. Potentiellement intégrable dans un parcours souscription MRH ou dans un service post-sinistre.</div>
+    <div class="stat-box orange">Outil simple, <strong>gratuit côté assuré</strong>, données géotechniques fiables issues du BRGM</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Intégrer le diagnostic Argile.ai dans le parcours de souscription MRH pour les maisons individuelles en zone à risque. Si aléa fort détecté : affichage automatique d'une recommandation de travaux préventifs et de l'aide Fonds Prévention Argile.
+      <span class="idea-effort">POC léger — intégration partenaire</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">Argile.ai / BRGM</span>
+      <a class="card-link" href="https://www.argile.ai" target="_blank">argile.ai ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-risk-feu">Incendie</span><span class="tag t-equip">Équipement</span><span class="tag t-tech">Connecté</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Détecteurs fumée connectés : X-Sense et Netatmo montent en puissance</div>
+    <div class="card-body">Au-delà du DAAF obligatoire (15–30 €), des détecteurs connectés avec alerte smartphone et interconnexion sans fil se démocratisent (X-Sense, Netatmo, Ajax FireProtect). Autonomie 10 ans, app iOS/Android, test à distance. Prix : 40–150 €. Les assureurs commencent à les référencer pour des offres couplées, mais aucun programme national structuré n'existe encore en France.</div>
+    <div class="stat-box blue">Obligation légale DAAF depuis 2015 — mais seulement <strong>~60 %</strong> de taux d'équipement réel estimé</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Campagne "Détecteur offert" : à la souscription ou au renouvellement MRH, offrir un détecteur fumée connecté (coût ~30 €). Double bénéfice : réduction risque incendie + collecte de données de présence/alertes utiles. ROI positif si un sinistre sur 100 est évité.
+      <span class="idea-effort">POC léger — faible coût unitaire</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">X-Sense / Netatmo / Actual-immo</span>
+      <a class="card-link" href="https://fr.x-sense.com" target="_blank">x-sense.com ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ③ MOUVEMENTS DU MARCHÉ -->
+<div id="marche" class="section-head">
+  <div class="section-num num-green">③</div>
+  <h2>Mouvements du marché</h2>
+  <span class="section-desc">— partenariats, stratégies, modèles à observer</span>
+  <span class="section-count">3 mouvements</span>
+</div>
+
+<div class="grid-2">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-partenariat">Partenariat</span><span class="tag t-risk-vol">Vol</span></div>
+      <span class="card-date">En vigueur 2026</span>
+    </div>
+    <div class="card-title">Allianz × Homiris by SEPSAD : télésurveillance intégrée au contrat MRH avec réduction 15 %</div>
+    <div class="card-body">Allianz France recommande officiellement le système d'alarme télésurveillée Homiris by SEPSAD à ses assurés. En contrepartie d'un abonnement Homiris, l'assuré bénéficie d'une réduction de 15 % sur la part garanties de base de sa cotisation MRH (vol, dégâts des eaux, incendie…), valable jusqu'au 31/12/2026. C'est l'un des premiers partenariats assureur-équipementier sécurité aussi formalisés sur le marché français.</div>
+    <div class="stat-box green"><strong>−15 %</strong> sur les garanties de base MRH pour les abonnés Homiris — modèle à benchmarker</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      S'inspirer du modèle Allianz/Homiris pour structurer un partenariat similaire avec un acteur alarme certifié NFA2P (Ajax, Diagral, Daitem). Définir le niveau de réduction prime qui rend l'offre attractive pour l'assuré tout en restant ROI-positif côté sinistralité.
+      <span class="idea-effort">Projet moyen — négociation partenariat</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">Allianz France — page officielle télésurveillance (vérifié)</span>
+      <a class="card-link" href="https://www.allianz.fr/assurance-particulier/habitation-biens/assurance-habitation/telesurveillance.html" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-partenariat">Partenariat</span><span class="tag t-risk-eau">Dégâts des eaux</span><span class="tag t-tech">IoT</span></div>
+      <span class="card-date">International — 2024/2025</span>
+    </div>
+    <div class="card-title">Grohe × Die Bayerische (Allemagne) : l'assureur finance les capteurs eau pour ses assurés</div>
+    <div class="card-body">Depuis 2021 en Allemagne, l'assureur Die Bayerische offre le système Grohe Sense Guard à ses assurés MRH. Le modèle économique repose sur la réduction de sinistralité : la solution Grohe détecte 80 % des fuites en amont. En Finlande, LocalTapiola a mesuré −70 % de coûts sinistres eau. Ces deux cas documentés constituent la référence internationale pour tout assureur souhaitant se lancer.</div>
+    <div class="stat-box blue"><strong>−70 %</strong> coûts sinistres eau (LocalTapiola, Finlande) · <strong>80 %</strong> des fuites détectées en amont (Grohe)</div>
+    <div class="card-foot">
+      <span class="card-source">GROHE (communiqué officiel) / Die Bayerische (communiqué sept. 2021)</span>
+      <a class="card-link" href="https://www.grohe.com/en/corporate/news/category_news/pressreleases/pressrelease/a-smart-game-changer-grohe-sense-system-reduces-water-damage-costs-of-finnish-insurer-localtapiola-by-70-percent.html" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-lancement">Tendance marché</span><span class="tag t-tech">IoT</span></div>
+      <span class="card-date">2025–2026</span>
+    </div>
+    <div class="card-title">Assurance connectée "Pay-how-you-live" : une tendance de fond, des offres encore en construction</div>
+    <div class="card-body">Plusieurs assureurs européens explorent des offres MRH intégrant des objets connectés (capteurs, alarmes, détecteurs) pour moduler la cotisation selon le comportement préventif de l'assuré. Le modèle Vitality de Discovery/AXA Health, déployé en santé dans plusieurs pays, sert de référence conceptuelle. Les offres "habitat connecté" avec prime variable restent rares et peu formalisées sur le marché français à ce stade. <em>(⚠️ Offres spécifiques à vérifier assureur par assureur)</em></div>
+    <div class="stat-box orange">Tendance de fond : la prime <strong>modulée par le comportement préventif</strong> de l'assuré — modèle Vitality comme référence internationale</div>
+    <div class="card-foot">
+      <span class="card-source">Vitality / AXA Health — à compléter par veille marché France</span>
+      <a class="card-link" href="https://www.vitality.co.uk" target="_blank">vitality.co.uk ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ④ COMMUNICATION -->
+<div id="communication" class="section-head">
+  <div class="section-num num-purple">④</div>
+  <h2>Communication concurrents — Prévention sur les réseaux</h2>
+  <span class="section-desc">— comptes à surveiller &amp; campagnes observées</span>
+</div>
+
+<style>
+.com-intro { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+.com-intro strong { color: var(--text); }
+.accounts-table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; font-size: 13px; margin-bottom: 24px; }
+.accounts-table thead { background: var(--navy); color: white; }
+.accounts-table thead th { padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; }
+.accounts-table tbody tr { border-bottom: 1px solid var(--border); }
+.accounts-table tbody tr:last-child { border-bottom: none; }
+.accounts-table tbody tr:hover { background: var(--bg); }
+.accounts-table td { padding: 11px 14px; vertical-align: top; }
+.accounts-table td:first-child { font-weight: 700; white-space: nowrap; }
+.social-link { display: inline-flex; align-items: center; gap: 4px; border-radius: 4px; padding: 2px 8px; font-size: 11.5px; font-weight: 600; text-decoration: none; margin-right: 4px; margin-bottom: 3px; }
+.sl-li { background: #dbeafe; color: #1d4ed8; }
+.sl-x { background: #f1f5f9; color: #0f172a; }
+.sl-li:hover, .sl-x:hover { text-decoration: underline; }
+.profile-chip { display: inline-block; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; font-size: 11.5px; color: var(--muted); margin-right: 4px; margin-bottom: 3px; }
+.profile-chip a { color: var(--blue-light); text-decoration: none; }
+.profile-chip a:hover { text-decoration: underline; }
+.intensity-com { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+.ic-high { background: var(--green); }
+.ic-mid { background: var(--orange); }
+.ic-low { background: var(--border); }
+.campaign-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.camp-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+.camp-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.camp-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.camp-who { display: flex; gap: 5px; flex-wrap: wrap; }
+.camp-date { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+.t-who { border-radius: 4px; padding: 2px 8px; font-size: 11.5px; font-weight: 700; }
+.tw-maif { background: #fce7f3; color: #9d174d; }
+.tw-generali { background: #dbeafe; color: #1d4ed8; }
+.tw-covea { background: #d1fae5; color: #065f46; }
+.tw-assurprev { background: #fef3cd; color: #92400e; }
+.tw-multi { background: #ede9fe; color: #5b21b6; }
+.camp-channel { font-size: 11px; color: var(--muted); font-style: italic; }
+.camp-title { font-size: 14.5px; font-weight: 700; color: var(--text); line-height: 1.35; }
+.camp-body { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+.camp-signal { background: var(--bg); border-radius: 6px; padding: 8px 12px; font-size: 12.5px; color: var(--muted); border-left: 3px solid var(--purple); }
+.camp-signal strong { color: var(--text); }
+.camp-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid var(--border); font-size: 11.5px; }
+.methodo-box { background: var(--blue-pale); border: 1px solid #bfdbfe; border-radius: 10px; padding: 15px 18px; font-size: 12.5px; color: #1e3a5f; line-height: 1.6; }
+.methodo-box strong { color: var(--navy); }
+</style>
+
+<div class="com-intro">
+  <strong>Périmètre de cette section :</strong> suivre comment les assureurs concurrents communiquent sur la prévention — sujets traités, canaux privilégiés, profils qui prennent la parole, campagnes marquantes. Objectif : détecter les positionnements émergents, identifier des approches à observer ou à tester.
+  <br><br>
+  <strong>⚠️ Note de méthode :</strong> cette section est alimentée par veille manuelle bimensuelle (recherche web + lecture des comptes publics). Elle n'est pas un outil de social listening automatisé — la profondeur des observations augmentera au fil des éditions. Les profils individuels sont à consolider par test : certains sont actifs, d'autres très peu présents publiquement sur ces sujets.
+</div>
+
+<!-- PRISES DE PAROLE -->
+<style>
+.voice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; margin-bottom: 28px; }
+.voice-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+.voice-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.voice-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.voice-avatar { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; }
+.voice-identity { flex: 1; }
+.voice-name { font-size: 13.5px; font-weight: 800; color: var(--text); line-height: 1.2; }
+.voice-role { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+.voice-platform { display: inline-flex; align-items: center; gap: 4px; border-radius: 4px; padding: 2px 8px; font-size: 11px; font-weight: 600; }
+.vp-li { background: var(--blue-pale); color: var(--blue); }
+.vp-press { background: var(--green-pale); color: var(--green); }
+.voice-quote { background: var(--bg); border-left: 3px solid; border-radius: 0 6px 6px 0; padding: 10px 13px; font-size: 13px; color: var(--text); line-height: 1.6; font-style: italic; flex: 1; }
+.voice-context { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.voice-signal { display: inline-block; border-radius: 4px; padding: 3px 9px; font-size: 11px; font-weight: 700; margin-top: 4px; }
+.voice-foot { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--border); font-size: 11.5px; }
+
+.watch-block { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 28px; }
+.watch-block-title { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 10px; letter-spacing: .3px; }
+.watch-row { display: flex; flex-wrap: wrap; gap: 8px 6px; align-items: center; margin-bottom: 6px; }
+.watch-label { font-size: 11.5px; font-weight: 700; color: var(--muted); width: 140px; flex-shrink: 0; }
+</style>
+
+<p style="font-size:13px; font-weight:700; color:var(--navy); margin-bottom:12px;">Prises de paroles Prévention</p>
+
+<div class="voice-grid">
+
+  <!-- Jean-Laurent Granier — Generali -->
+  <div class="voice-card" style="border-top: 3px solid #1d4ed8;">
+    <div class="voice-top">
+      <div style="display:flex; gap:10px; align-items:flex-start;">
+        <div class="voice-avatar" style="background:#dbeafe;">🏛️</div>
+        <div class="voice-identity">
+          <div class="voice-name">Jean-Laurent Granier</div>
+          <div class="voice-role">PDG — Generali France · co-fondateur Geoya</div>
+        </div>
+      </div>
+      <span class="voice-platform vp-li">LinkedIn · Presse</span>
+    </div>
+    <div class="voice-quote" style="border-color:#1d4ed8;">
+      «&nbsp;Nous devons évoluer vers une conditionnalité des garanties et de la tarification à la mise en œuvre de mesures de prévention.&nbsp;»
+    </div>
+    <div class="voice-context">
+      Discours récurrent depuis 2025 : Granier positionne Generali comme acteur de l'assurabilité à long terme. En mai 2026, Generali investit 4 M€ dans <strong>AI6 Technologies</strong> (IA + big data pour prévenir les sinistres climatiques), dans le cadre de sa stratégie Boost 2027.
+    </div>
+    <span class="voice-signal" style="background:#dbeafe; color:#1d4ed8;">Signal fort : assurabilité conditionnée à la prévention</span>
+    <div class="voice-foot">
+      <span class="card-source">News Assurances Pro / L'Assurance en Mouvement</span>
+      <a class="card-link" href="https://www.newsassurancespro.com/construisons-collectivement-les-nouvelles-conditions-de-lassurabilite/01691655528" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <!-- Romain Liberge — MAIF -->
+  <div class="voice-card" style="border-top: 3px solid #9d174d;">
+    <div class="voice-top">
+      <div style="display:flex; gap:10px; align-items:flex-start;">
+        <div class="voice-avatar" style="background:#fce7f3;">📣</div>
+        <div class="voice-identity">
+          <div class="voice-name">Romain Liberge</div>
+          <div class="voice-role">Dir. Marketing &amp; Design — MAIF</div>
+        </div>
+      </div>
+      <span class="voice-platform vp-li">LinkedIn · Presse</span>
+    </div>
+    <div class="voice-quote" style="border-color:#9d174d;">
+      «&nbsp;Il faut faire prendre conscience du risque climatique : notre gros chantier est donc celui de la prévention.&nbsp;»
+    </div>
+    <div class="voice-context">
+      Liberge est la voix marketing la plus assumée sur la prévention dans le secteur. Il défend publiquement le changement de paradigme vers l'"assureur préventif", avec des réalisations concrètes : outil <strong>Aux Alentours</strong>, compte LinkedIn <strong>Prévention MAIF</strong> dédié, diagnostic inondation financé par le "dividende écologique" de la mutuelle.
+    </div>
+    <span class="voice-signal" style="background:#fce7f3; color:#9d174d;">Signal fort : marketing de prévention assumé et outillé</span>
+    <div class="voice-foot">
+      <span class="card-source">Innovation Assurance (interview)</span>
+      <a class="card-link" href="https://www.innovation-assurance.com/romain-liberge-maif-risque-climatique-prevention/" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <!-- Benjamin Poudret — Covéa -->
+  <div class="voice-card" style="border-top: 3px solid #065f46;">
+    <div class="voice-top">
+      <div style="display:flex; gap:10px; align-items:flex-start;">
+        <div class="voice-avatar" style="background:#d1fae5;">📊</div>
+        <div class="voice-identity">
+          <div class="voice-name">Benjamin Poudret</div>
+          <div class="voice-role">Dir. Climat &amp; Sinistres majeurs — Covéa</div>
+        </div>
+      </div>
+      <span class="voice-platform vp-press">Presse spécialisée</span>
+    </div>
+    <div class="voice-quote" style="border-color:#065f46;">
+      «&nbsp;Notre objectif est de démocratiser l'anticipation et la prévention des risques climatiques — passer d'une logique d'indemnisation à une logique de prévention.&nbsp;»
+    </div>
+    <div class="voice-context">
+      Poudret pilote depuis avril 2024 la direction Climat de Covéa. En juin 2025, il a porté le lancement de <strong>Bien Informé Bien Assuré</strong> (outil de diagnostic risques climatiques à 2050), avec l'engagement chiffré de consacrer <strong>0,5 % des primes habitation climatiques</strong> à la prévention.
+    </div>
+    <span class="voice-signal" style="background:#d1fae5; color:#065f46;">Signal fort : engagement chiffré — 0,5 % des primes dédié prévention</span>
+    <div class="voice-foot">
+      <span class="card-source">News Assurances Pro (juin 2025)</span>
+      <a class="card-link" href="https://www.newsassurancespro.com/benjamin-poudret-covea-democratiser-lanticipation-et-la-prevention-des-risques-climatiques/01691660477" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <!-- Xavier Bollier — Agent terrain -->
+  <div class="voice-card" style="border-top: 3px solid #d97706;">
+    <div class="voice-top">
+      <div style="display:flex; gap:10px; align-items:flex-start;">
+        <div class="voice-avatar" style="background:#fef3cd;">🎙️</div>
+        <div class="voice-identity">
+          <div class="voice-name">Xavier Bollier</div>
+          <div class="voice-role">Agent général Generali — Pactes Assurances (Nice)</div>
+        </div>
+      </div>
+      <span class="voice-platform vp-li">LinkedIn</span>
+    </div>
+    <div class="voice-quote" style="border-color:#d97706;">
+      Publie régulièrement sur les enjeux d'assurabilité, le RGA, les Cat Nat et la prévention climatique — avec une voix de terrain rare dans la sphère assurance.
+    </div>
+    <div class="voice-context">
+      Bollier est un des rares agents généraux actifs en tant que <strong>leader d'opinion</strong> sur LinkedIn sur ces sujets. Sa singularité : il parle en son nom, avec le recul du praticien confronté quotidiennement aux conséquences des risques naturels sur ses clients. <em>Profil à suivre en priorité — contenu spécifique à qualifier lors de la prochaine veille.</em>
+    </div>
+    <span class="voice-signal" style="background:#fef3cd; color:#92400e;">Voix terrain à suivre — qualification en cours</span>
+    <div class="voice-foot">
+      <span class="card-source">LinkedIn — linkedin.com/in/pactes</span>
+      <a class="card-link" href="https://www.linkedin.com/in/pactes/" target="_blank">Voir profil ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- COMPTES À SURVEILLER (résumé compact) -->
+<div class="watch-block">
+  <div class="watch-block-title">📋 Comptes institutionnels &amp; profils à surveiller — récapitulatif</div>
+  <div class="watch-row">
+    <span class="watch-label"><span class="intensity-com ic-high"></span> MAIF</span>
+    <a class="social-link sl-li" href="https://fr.linkedin.com/company/maif" target="_blank">in MAIF</a>
+    <a class="social-link sl-li" href="https://fr.linkedin.com/company/pr%C3%A9vention-maif" target="_blank">in Prévention MAIF</a>
+    <a class="social-link sl-x" href="https://x.com/MAIF" target="_blank">𝕏 MAIF</a>
+    <span class="profile-chip"><a href="https://fr.linkedin.com/in/romainliberge" target="_blank">Romain Liberge</a></span>
+  </div>
+  <div class="watch-row">
+    <span class="watch-label"><span class="intensity-com ic-high"></span> Generali France</span>
+    <a class="social-link sl-li" href="https://fr.linkedin.com/company/generali-france" target="_blank">in Generali France</a>
+    <a class="social-link sl-x" href="https://twitter.com/generalifrance" target="_blank">𝕏 Generali</a>
+    <span class="profile-chip"><a href="https://fr.linkedin.com/in/jeanlaurentgranier" target="_blank">J-L. Granier</a></span>
+    <span class="profile-chip"><a href="https://www.linkedin.com/in/pactes/" target="_blank">X. Bollier (agent)</a></span>
+  </div>
+  <div class="watch-row">
+    <span class="watch-label"><span class="intensity-com ic-mid"></span> Covéa</span>
+    <a class="social-link sl-li" href="https://fr.linkedin.com/company/groupecovea" target="_blank">in Covéa</a>
+    <a class="social-link sl-x" href="https://x.com/MAAFAssurance" target="_blank">𝕏 MAAF</a>
+    <a class="social-link sl-x" href="https://x.com/MMAssurances" target="_blank">𝕏 MMA</a>
+    <span class="profile-chip"><a href="https://www.linkedin.com/in/benjamin-poudret-5ab8b1121/" target="_blank">B. Poudret</a></span>
+  </div>
+  <div class="watch-row">
+    <span class="watch-label"><span class="intensity-com ic-mid"></span> Macif / Matmut</span>
+    <a class="social-link sl-li" href="https://fr.linkedin.com/company/macif" target="_blank">in Macif</a>
+    <a class="social-link sl-li" href="https://fr.linkedin.com/company/matmut" target="_blank">in Matmut</a>
+    <span class="profile-chip" style="color:var(--orange); border-color:var(--idea-border);">Profils individuels à identifier</span>
+  </div>
+  <div class="watch-row">
+    <span class="watch-label"><span class="intensity-com ic-mid"></span> Allianz France</span>
+    <a class="social-link sl-li" href="https://fr.linkedin.com/company/allianz-france" target="_blank">in Allianz France</a>
+    <a class="social-link sl-x" href="https://x.com/AllianzFrance" target="_blank">𝕏 Allianz</a>
+    <span class="profile-chip"><a href="https://fr.linkedin.com/in/xavier-guisnet-assurance" target="_blank">X. Guisnet (agent, à qualifier)</a></span>
+  </div>
+  <div class="watch-row" style="margin-top:4px; padding-top:8px; border-top:1px solid var(--border);">
+    <span class="watch-label" style="color:var(--blue);">+ Sectoriels</span>
+    <a class="social-link sl-li" href="https://fr.linkedin.com/company/assurance-prevention" target="_blank">in Assurance Prévention</a>
+    <a class="social-link sl-li" href="https://geoya.fr" target="_blank">Geoya</a>
+    <a class="social-link sl-li" href="https://ensemble-face-aux-risques.generali.fr/" target="_blank">EFAR Generali</a>
+  </div>
+</div>
+
+<!-- CAMPAGNES OBSERVÉES -->
+<p style="font-size:13px; font-weight:700; color:var(--navy); margin-bottom:12px;">Campagnes &amp; prises de parole observées sur la prévention</p>
+
+<div class="campaign-grid">
+
+  <div class="camp-card" style="border-top: 3px solid var(--purple);">
+    <div class="camp-head">
+      <div class="camp-who">
+        <span class="tag t-who tw-multi">5 fondateurs : Generali · MAIF · SG Assurances · Saretec · Sixense</span>
+      </div>
+      <span class="camp-date">Jan. 2026</span>
+    </div>
+    <div class="camp-channel">LinkedIn · Presse · Site dédié · Relations média</div>
+    <div class="camp-title">Lancement de Geoya — plateforme inter-acteurs de prévention climatique</div>
+    <div class="camp-body">Annonce co-signée par cinq acteurs majeurs (trois assureurs + Saretec + Sixense). Geoya propose diagnostics et solutions de réduction de vulnérabilité aux risques climatiques (inondations en priorité, puis RGA, grêle, tempêtes). La plateforme était ouverte aux seuls assureurs fondateurs, avec extension au marché prévue au premier semestre 2026. 13 projets pilotes en cours dans deux pays. La communication insiste sur la <em>co-construction</em> et le <em>bien commun</em>.</div>
+    <div class="camp-signal"><strong>Signal stratégique :</strong> cinq acteurs concurrents ou complémentaires s'associent pour créer une infrastructure de prévention partagée — positionnement fort sur la responsabilité collective.</div>
+    <div class="camp-foot">
+      <span class="card-source">Generali France / MAIF / SG Assurances (communiqués de presse officiels, jan. 2026)</span>
+      <a class="card-link" href="https://presse.generali.fr/actualites/cinq-acteurs-majeurs-de-l-assurance-et-de-la-maitrise-des-risques-lancent-geoya-une-solution-de-place-inedite-pour-la-prevention-des-risques-climatiques-ee19c-a5035.html" target="_blank">Communiqué Generali ↗</a>
+    </div>
+  </div>
+
+  <div class="camp-card" style="border-top: 3px solid #9d174d;">
+    <div class="camp-head">
+      <div class="camp-who"><span class="tag t-who tw-maif">MAIF</span></div>
+      <span class="camp-date">Nov. 2024</span>
+    </div>
+    <div class="camp-channel">LinkedIn · Site MAIF · Presse spécialisée · Conférences</div>
+    <div class="camp-title">"Aux Alentours par MAIF" — diagnostic de risque climatique par adresse, financé par la mutuelle</div>
+    <div class="camp-body">Outil en ligne permettant à tout assuré MAIF d'obtenir un diagnostic de vulnérabilité climatique de son habitation (inondation, RGA, retrait des sols). Le diagnostic complet est financé par le "dividende écologique" de la mutuelle. Romain Liberge (Dir. Marketing) en fait l'un des axes de communication majeurs, avec une prise de parole assumée : <em>"notre gros chantier est la prévention"</em>.</div>
+    <div class="camp-signal"><strong>Signal communication :</strong> le directeur marketing parle publiquement de "changement de paradigme" vers l'assureur préventif — discours rare et différenciant dans le secteur.</div>
+    <div class="camp-foot">
+      <span class="card-source">Entreprise MAIF / Innovation Assurance</span>
+      <a class="card-link" href="https://entreprise.maif.fr/actualites/presse/2024/aux-alentours-maif-outil-prevention-aleas" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="camp-card" style="border-top: 3px solid var(--orange);">
+    <div class="camp-head">
+      <div class="camp-who"><span class="tag t-who tw-assurprev">Assurance Prévention</span></div>
+      <span class="camp-date">Oct. 2025</span>
+    </div>
+    <div class="camp-channel">Presse nationale · Réseaux sociaux · Terrain · Partenariats institutionnels</div>
+    <div class="camp-title">"Les gestes qui sauvent" — campagne nationale risques naturels, Journée de la Résilience</div>
+    <div class="camp-body">À l'occasion du 13 octobre 2025 (Journée Nationale de la Résilience), Assurance Prévention (émanation de France Assureurs) déploie un dispositif national : articles PQR, carrousels pédagogiques et vidéo sur les réseaux sociaux, ateliers terrain. Baromètre publié : 48 % des Français ont été confrontés à une inondation, mais seulement 30 % ont aménagé leur logement.</div>
+    <div class="camp-signal"><strong>Signal communication :</strong> campagne sectorielle collective — aucun assureur seul ne peut avoir cet impact. Modèle de portage mutualisé à connaître.</div>
+    <div class="camp-foot">
+      <span class="card-source">Assurance Prévention / France Assureurs</span>
+      <a class="card-link" href="https://www.assurance-prevention.fr/nos-actions/sensibilisation-risques-naturels-campagne-2025/" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="camp-card" style="border-top: 3px solid var(--green);">
+    <div class="camp-head">
+      <div class="camp-who"><span class="tag t-who tw-covea">Covéa (MAAF/MMA/GMF)</span></div>
+      <span class="camp-date">Juin 2025</span>
+    </div>
+    <div class="camp-channel">Site Covéa · LinkedIn · Relations presse</div>
+    <div class="camp-title">"Bien Informé, Bien Assuré" — outil d'évaluation de l'exposition aux risques climatiques</div>
+    <div class="camp-body">Covéa lance un outil en ligne permettant aux membres de ses trois marques d'évaluer leur exposition actuelle et future aux aléas climatiques. L'initiative s'inscrit dans un engagement de Covéa de consacrer 0,5 % des primes d'assurance habitation climatique à des actions de prévention et de sensibilisation. La "Fresk Prévention MAAF" complète le dispositif : atelier pédagogique en présentiel pour les équipes.</div>
+    <div class="camp-signal"><strong>Signal communication :</strong> Covéa monétise l'engagement RSE en communication prévention concrète — le 0,5 % dédié est un engagement chiffré, rare et crédible.</div>
+    <div class="camp-foot">
+      <span class="card-source">Covéa — communiqué officiel juin 2025</span>
+      <a class="card-link" href="https://www.covea.com/fr/actualites/covea-lance-bien-informe-bien-assure-outil-innovant-anticiper-risques-climatiques" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="camp-card" style="border-top: 3px solid #9d174d;">
+    <div class="camp-head">
+      <div class="camp-who"><span class="tag t-who tw-maif">Prévention MAIF</span></div>
+      <span class="camp-date">Sept. 2025</span>
+    </div>
+    <div class="camp-channel">Terrain · LinkedIn · Site Prévention MAIF</div>
+    <div class="camp-title">Résilience Tour — 45 ans de Prévention MAIF, 1 800 bénévoles, ateliers inondation partout en France</div>
+    <div class="camp-body">À l'occasion des 45 ans de l'association Prévention MAIF, un tour de France d'ateliers de sensibilisation au risque inondation est organisé avec 1 800 bénévoles actifs. L'association dispose de son propre compte LinkedIn, d'un site dédié, et produit des guides pratiques (inondation, associations, collectivités). C'est une infrastructure de communication prévention unique en France par son ampleur.</div>
+    <div class="camp-signal"><strong>Signal communication :</strong> Prévention MAIF est une entité à part entière — pas un département, une vraie association avec des moyens et une audience. Modèle de long terme.</div>
+    <div class="camp-foot">
+      <span class="card-source">Prévention MAIF</span>
+      <a class="card-link" href="https://prevention-maif.fr/resilience-tour-ateliers-de-sensibilisation-au-risque-inondation/" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- METHODO -->
+<div class="methodo-box">
+  <strong>Prochaines étapes pour enrichir cette section :</strong><br>
+  1. <strong>Qualifier les profils individuels</strong> manquants (Macif, Matmut, Allianz) — chercher qui parle de prévention en leur nom sur LinkedIn/X.<br>
+  2. <strong>Tester le suivi de Geoya</strong> : cette nouvelle entité va produire de la communication propre — à surveiller de très près.<br>
+  3. <strong>Élargir aux TikTok</strong> si présence confirmée (MAIF et Allianz ont des comptes actifs, angle plutôt sinistres/témoignages pour l'instant).<br>
+  4. Intégrer un <strong>suivi des hashtags</strong> (#prévention, #résilience, #assurance) pour détecter les prises de parole spontanées.
+</div>
+
+<!-- ⑤ RÉGLEMENTATION -->
+<div id="reglementation" class="section-head">
+  <div class="section-num num-teal">⑤</div>
+  <h2>Réglementation</h2>
+  <span class="section-desc">— ce qui change, et ce que ça implique concrètement</span>
+  <span class="section-count">3 évolutions</span>
+</div>
+
+<div style="display:grid; gap:14px;">
+
+  <div class="reg-card">
+    <div class="reg-icon orange">⚖️</div>
+    <div class="reg-content">
+      <h4>Loi Inondations du 19 mai 2026 — simplification des travaux de prévention</h4>
+      <p>La loi n°2026-381 simplifie les procédures d'autorisation pour les travaux post-crue et renforce la compétence GEMAPI des collectivités. Elle facilite aussi les servitudes sur terrains privés pour l'entretien de digues, sans enquête publique obligatoire.</p>
+      <div class="reg-implication">
+        <span class="impl-pill impl-assureur">Assureur : les travaux de prévention dans les zones à risque devraient s'accélérer, réduisant l'exposition à moyen terme</span>
+        <span class="impl-pill impl-assure">Assuré : moins de délais administratifs pour protéger son bien en zone inondable</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reg-card">
+    <div class="reg-icon red">💶</div>
+    <div class="reg-content">
+      <h4>Surprime CatNat portée à 20 % — en vigueur depuis janvier 2025</h4>
+      <p>Le taux de contribution au Fonds Cat Nat est passé de 12 % à 20 % sur les contrats MRH et auto. Sur une prime MRH de 300 €, c'est +24 €/an pour l'assuré. Les franchises légales 2026 sont fixées à 380 € (locataire), 1 520 € (propriétaire maison), 3 050 € (professionnel).</p>
+      <div class="reg-implication">
+        <span class="impl-pill impl-assureur">Assureur : argument fort pour proposer la prévention comme moyen de réduire les franchises et le coût global pour l'assuré</span>
+        <span class="impl-pill impl-assure">Assuré : hausse visible de la prime — sensible à toute offre permettant de la réduire via la prévention</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reg-card">
+    <div class="reg-icon blue">🌿</div>
+    <div class="reg-content">
+      <h4>PNACC-3 — Plan National d'Adaptation au Changement Climatique, 2024-2030</h4>
+      <p>Le 3e plan national d'adaptation climatique, adopté en novembre 2024, fixe 51 mesures sur 6 ans pour réduire la vulnérabilité de la France. Il renforce l'articulation entre prévention des risques naturels et assurance, avec un accent sur la réduction de la vulnérabilité des bâtiments exposés (inondation, RGA, sécheresse). Il préfigure de futures évolutions réglementaires sur la conditionnalité des garanties à la mise en œuvre de mesures préventives.</p>
+      <div class="reg-implication">
+        <span class="impl-pill impl-assureur">Assureur : anticiper l'évolution vers une conditionnalité des garanties — cohérent avec le discours de J-L. Granier (Generali)</span>
+        <span class="impl-pill impl-assure">Assuré : les aides à la rénovation préventive (diagnostics, travaux) devraient se développer dans ce cadre</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer style="background: var(--navy); color: rgba(255,255,255,.7); text-align: center; padding: 32px 24px; font-size: 12px; margin-top: 48px;">
+  <div style="max-width: 900px; margin: 0 auto;">
+    <div style="font-size: 14px; font-weight: 700; color: white; margin-bottom: 8px;">Veille Prévention · Assurance</div>
+    <div style="margin-bottom: 6px;">Édition N°1 · Mai 2026 — Prochaine édition : juillet 2026</div>
+    <div style="margin-bottom: 6px;">Périmètre : particuliers · Auto · MRH · Santé · Prévoyance · Risques climatiques &amp; classiques</div>
+    <div style="color: rgba(255,255,255,.45); margin-top: 12px;">Ce document est produit à partir de sources primaires publiques (sites assureurs, communiqués de presse, Légifrance, France Assureurs). Les informations sont à vérifier avant toute utilisation opérationnelle.</div>
+  </div>
+</footer>
+
+</body>
+</html>
