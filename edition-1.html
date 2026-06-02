@@ -193,59 +193,7 @@ card-date { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shri
 
 <!-- NAV -->
 <!-- EXECUTIVE SUMMARY -->
-<style>
-.exec-bar { background: var(--navy); border-bottom: 2px solid rgba(255,255,255,.08); padding: 0 24px; }
-.exec-label { font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,.45); padding: 12px 0 6px; }
-.exec-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; padding-bottom: 0; }
-@media (max-width: 860px) { .exec-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 560px) { .exec-grid { grid-template-columns: repeat(2, 1fr); } }
-.exec-card { padding: 10px 12px 14px; border-right: 1px solid rgba(255,255,255,.07); display: flex; flex-direction: column; gap: 5px; text-decoration: none; transition: background .12s; }
-.exec-card:last-child { border-right: none; }
-.exec-card:hover { background: rgba(255,255,255,.06); }
-.exec-section-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .5px; border-radius: 3px; padding: 2px 6px; margin-bottom: 2px; width: fit-content; }
-.etag-red    { background: rgba(192,57,43,.25);  color: #f87171; }
-.etag-blue   { background: rgba(21,84,160,.3);   color: #93c5fd; }
-.etag-green  { background: rgba(26,148,96,.25);  color: #6ee7b7; }
-.etag-purple { background: rgba(109,40,217,.3);  color: #c4b5fd; }
-.etag-teal   { background: rgba(14,116,144,.3);  color: #67e8f9; }
-.exec-chiffre { font-size: 19px; font-weight: 900; color: #fff; line-height: 1.1; letter-spacing: -.3px; }
-.exec-title { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.8); line-height: 1.35; }
-.exec-sub { font-size: 10.5px; color: rgba(255,255,255,.45); line-height: 1.35; }
-</style>
-<div class="exec-bar">
-  <div class="exec-label">En bref — 4 faits des deux derniers mois</div>
-  <div class="exec-grid" style="grid-template-columns: repeat(4, 1fr);">
 
-    <a href="#signaux" class="exec-card">
-      <span class="exec-section-tag etag-red">① Signaux — Avr. 2026</span>
-      <span class="exec-chiffre">10 M+</span>
-      <span class="exec-title">maisons exposées au RGA — l'État lance une aide au diagnostic</span>
-      <span class="exec-sub">Nouveaux départements pilotes confirmés en avril 2026</span>
-    </a>
-
-    <a href="#solutions" class="exec-card">
-      <span class="exec-section-tag etag-blue">② Équipements — 2026</span>
-      <span class="exec-chiffre">−15 %</span>
-      <span class="exec-title">sur la MRH Allianz avec Homiris by SEPSAD</span>
-      <span class="exec-sub">Premier partenariat assureur-télésurveillance formalisé sur le marché français</span>
-    </a>
-
-    <a href="#communication" class="exec-card">
-      <span class="exec-section-tag etag-purple">④ Prises de parole — Mai 2026</span>
-      <span class="exec-chiffre">4 M€</span>
-      <span class="exec-title">Generali investit dans AI6 Technologies</span>
-      <span class="exec-sub">IA + big data pour prévenir les sinistres climatiques — stratégie Boost 2027</span>
-    </a>
-
-    <a href="#reglementation" class="exec-card">
-      <span class="exec-section-tag etag-teal">⑤ Réglementation — 19 mai 2026</span>
-      <span class="exec-chiffre">Loi 2026-381</span>
-      <span class="exec-title">Simplification des travaux de prévention inondation</span>
-      <span class="exec-sub">Procédures post-crue allégées, servitudes facilitées — impact direct sur la sinistralité MRH</span>
-    </a>
-
-  </div>
-</div>
 
 <div class="topnav">
   <div class="topnav-brand">Cellule Prévention</div>
@@ -282,7 +230,59 @@ card-date { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shri
   </div>
 </div>
 
+<style>
+.exec-inpage { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px 20px; margin: 24px 0 8px; box-shadow: 0 1px 6px rgba(13,34,64,.06); }
+.exec-inpage-label { font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.exec-inpage-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; }
+@media (max-width: 860px) { .exec-inpage-grid { grid-template-columns: repeat(2, 1fr); } }
+.exec-inpage-card { background: var(--card); padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 5px; text-decoration: none; transition: background .12s; }
+.exec-inpage-card:hover { background: var(--bg); }
+.eip-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .4px; border-radius: 3px; padding: 2px 6px; margin-bottom: 3px; width: fit-content; }
+.eip-red    { background: var(--red-pale);    color: var(--red); }
+.eip-blue   { background: var(--blue-pale);   color: var(--blue); }
+.eip-purple { background: var(--purple-pale); color: var(--purple); }
+.eip-teal   { background: var(--teal-pale);   color: var(--teal); }
+.eip-chiffre { font-size: 20px; font-weight: 900; color: var(--navy); line-height: 1.1; letter-spacing: -.3px; }
+.eip-title { font-size: 11.5px; font-weight: 600; color: var(--text); line-height: 1.35; }
+.eip-sub { font-size: 11px; color: var(--muted); line-height: 1.4; }
+</style>
 <div class="main">
+
+<!-- EN BREF -->
+<div class="exec-inpage">
+  <div class="exec-inpage-label">En bref — 4 faits des deux derniers mois</div>
+  <div class="exec-inpage-grid">
+
+    <a href="#signaux" class="exec-inpage-card">
+      <span class="eip-tag eip-red">① Signaux — Avr. 2026</span>
+      <span class="eip-chiffre">10 M+</span>
+      <div class="eip-title">maisons exposées au RGA — l'État lance une aide au diagnostic</div>
+      <div class="eip-sub">Nouveaux départements pilotes confirmés en avril 2026</div>
+    </a>
+
+    <a href="#solutions" class="exec-inpage-card">
+      <span class="eip-tag eip-blue">② Équipements — 2026</span>
+      <span class="eip-chiffre">−15 %</span>
+      <div class="eip-title">sur la MRH Allianz avec Homiris by SEPSAD</div>
+      <div class="eip-sub">Premier partenariat assureur-télésurveillance formalisé en France</div>
+    </a>
+
+    <a href="#communication" class="exec-inpage-card">
+      <span class="eip-tag eip-purple">④ Prises de parole — Mai 2026</span>
+      <span class="eip-chiffre">4 M€</span>
+      <div class="eip-title">Generali investit dans AI6 Technologies</div>
+      <div class="eip-sub">IA + big data pour prévenir les sinistres climatiques — Boost 2027</div>
+    </a>
+
+    <a href="#reglementation" class="exec-inpage-card">
+      <span class="eip-tag eip-teal">⑤ Réglementation — 19 mai 2026</span>
+      <span class="eip-chiffre">Loi 2026-381</span>
+      <div class="eip-title">Simplification des travaux de prévention inondation</div>
+      <div class="eip-sub">Procédures post-crue allégées — impact direct sur la sinistralité MRH</div>
+    </a>
+
+  </div>
+</div>
 
 <!-- ① SIGNAUX FORTS -->
 <div id="signaux" class="section-head">
@@ -889,26 +889,4 @@ card-date { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shri
   <div class="reg-card">
     <div class="reg-icon blue">🌿</div>
     <div class="reg-content">
-      <h4>PNACC-3 — Plan National d'Adaptation au Changement Climatique, 2024-2030</h4>
-      <p>Le 3e plan national d'adaptation climatique, adopté en novembre 2024, fixe 51 mesures sur 6 ans pour réduire la vulnérabilité de la France. Il renforce l'articulation entre prévention des risques naturels et assurance, avec un accent sur la réduction de la vulnérabilité des bâtiments exposés (inondation, RGA, sécheresse). Il préfigure de futures évolutions réglementaires sur la conditionnalité des garanties à la mise en œuvre de mesures préventives.</p>
-      <div class="reg-implication">
-        <span class="impl-pill impl-assureur">Assureur : anticiper l'évolution vers une conditionnalité des garanties — cohérent avec le discours de J-L. Granier (Generali)</span>
-        <span class="impl-pill impl-assure">Assuré : les aides à la rénovation préventive (diagnostics, travaux) devraient se développer dans ce cadre</span>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- FOOTER -->
-<footer style="background: var(--navy); color: rgba(255,255,255,.7); text-align: center; padding: 32px 24px; font-size: 12px; margin-top: 48px;">
-  <div style="max-width: 900px; margin: 0 auto;">
-    <div style="font-size: 14px; font-weight: 700; color: white; margin-bottom: 8px;">Veille Prévention · Assurance</div>
-    <div style="margin-bottom: 6px;">Édition N°1 · Mai 2026 — Prochaine édition : juillet 2026</div>
-    <div style="margin-bottom: 6px;">Périmètre : particuliers · Auto · MRH · Santé · Prévoyance · Risques climatiques &amp; classiques</div>
-    <div style="color: rgba(255,255,255,.45); margin-top: 12px;">Ce document est produit à partir de sources primaires publiques (sites assureurs, communiqués de presse, Légifrance, France Assureurs). Les informations sont à vérifier avant toute utilisation opérationnelle.</div>
-  </div>
-</footer>
-
-</body>
-</html>
+      <h4>PNACC-3 �
