@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veille Prévention — Édition N°2 — Juin 2026</title>
+<style>
+:root {
+  color-scheme: light;
+  --navy: #0d2240;
+  --blue: #1554a0;
+  --blue-light: #2d7dd2;
+  --blue-pale: #e8f1fb;
+  --green: #1a9460;
+  --green-pale: #e6f6ee;
+  --orange: #d97706;
+  --orange-pale: #fef3cd;
+  --red: #c0392b;
+  --red-pale: #fdecea;
+  --purple: #6d28d9;
+  --purple-pale: #ede9fe;
+  --teal: #0e7490;
+  --teal-pale: #e0f5f9;
+  --idea: #92400e;
+  --idea-bg: #fffbeb;
+  --idea-border: #f59e0b;
+  --bg: #f3f6fb;
+  --card: #ffffff;
+  --border: #dde4ef;
+  --text: #1a2035;
+  --muted: #5a6480;
+  --tag-h: 13px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.55; }
+
+/* NAV */
+.topnav { background: var(--navy); display: flex; align-items: center; gap: 0; overflow-x: auto; }
+.topnav a { color: rgba(255,255,255,.65); text-decoration: none; padding: 13px 18px; font-size: 12.5px; font-weight: 500; white-space: nowrap; border-bottom: 2px solid transparent; transition: all .15s; }
+.topnav a:hover, .topnav a.active { color: #fff; border-bottom-color: #60a5fa; }
+.topnav-brand { color: white; font-weight: 700; font-size: 13px; padding: 13px 20px; border-right: 1px solid rgba(255,255,255,.12); margin-right: 4px; white-space: nowrap; }
+
+/* HEADER */
+.header { background: linear-gradient(135deg, var(--navy) 0%, #1a3a6e 100%); padding: 30px 36px 24px; }
+.header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap; }
+.header-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,.55); margin-bottom: 7px; }
+.header h1 { font-size: 24px; font-weight: 800; color: #fff; letter-spacing: -.4px; line-height: 1.2; }
+.header-sub { color: rgba(255,255,255,.7); font-size: 13px; margin-top: 5px; }
+.header-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+.badge { border-radius: 6px; padding: 6px 13px; font-size: 12px; font-weight: 600; }
+.badge-edition { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); color: #fff; }
+.badge-next { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.55); font-size: 11px; }
+.intensity-bar { display: flex; align-items: center; gap: 10px; margin-top: 20px; }
+.intensity-label { font-size: 11px; color: rgba(255,255,255,.5); font-weight: 600; letter-spacing: .8px; text-transform: uppercase; }
+.intensity-dots { display: flex; gap: 5px; }
+.intensity-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.2); }
+.intensity-dot.on { background: #f59e0b; }
+.intensity-text { font-size: 12px; color: #f59e0b; font-weight: 600; }
+
+/* MAIN */
+.main { max-width: 1120px; margin: 0 auto; padding: 28px 22px 60px; }
+
+/* SECTION HEADERS */
+.section-head { display: flex; align-items: center; gap: 10px; margin: 36px 0 18px; }
+.section-num { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
+.num-red { background: var(--red-pale); color: var(--red); }
+.num-blue { background: var(--blue-pale); color: var(--blue); }
+.num-green { background: var(--green-pale); color: var(--green); }
+.num-purple { background: var(--purple-pale); color: var(--purple); }
+.num-teal { background: var(--teal-pale); color: var(--teal); }
+.section-head h2 { font-size: 17px; font-weight: 800; color: var(--navy); }
+.section-head .section-desc { font-size: 12.5px; color: var(--muted); margin-left: 4px; }
+.section-count { margin-left: auto; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2px 10px; font-size: 11.5px; color: var(--muted); font-weight: 500; }
+
+/* GRID */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 16px; }
+
+/* CARDS */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 12px; transition: box-shadow .15s; }
+.card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.08); }
+.card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { border-radius: 4px; padding: 2px 8px; font-size: var(--tag-h); font-weight: 600; letter-spacing: .3px; }
+.t-risk-eau { background: #dbeafe; color: #1d4ed8; }
+.t-risk-inond { background: #e0f2fe; color: #0369a1; }
+.t-risk-vol { background: #ede9fe; color: #5b21b6; }
+.t-risk-grele { background: #fce7f3; color: #9d174d; }
+.t-risk-feu { background: #fee2e2; color: #b91c1c; }
+.t-risk-rga { background: #fef9c3; color: #854d0e; }
+.t-risk-sante { background: #d1fae5; color: #065f46; }
+.t-risk-auto { background: #e0e7ff; color: #3730a3; }
+.t-equip { background: #d1fae5; color: #065f46; }
+.t-partenariat { background: #fef3cd; color: #92400e; }
+.t-lancement { background: #ede9fe; color: #5b21b6; }
+.t-reg { background: #fef3cd; color: #92400e; }
+.t-signal { background: #fee2e2; color: #991b1b; }
+.t-tech { background: #dbeafe; color: #1e40af; }
+.t-ia { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+.t-strategie { background: #f5f3ff; color: #5b21b6; }
+.card-date { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+.card-title { font-size: 14.5px; font-weight: 700; color: var(--text); line-height: 1.35; }
+.card-body { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+
+/* STAT BOX */
+.stat-box { border-radius: 8px; padding: 10px 14px; font-size: 12.5px; line-height: 1.5; background: var(--blue-pale); color: var(--blue); border-left: 3px solid var(--blue-light); }
+.stat-box.red { background: var(--red-pale); color: var(--red); border-left-color: var(--red); }
+.stat-box.green { background: var(--green-pale); color: var(--green); border-left-color: var(--green); }
+.stat-box.orange { background: var(--orange-pale); color: var(--orange); border-left-color: var(--orange); }
+
+/* IDEA BOX */
+.idea-box { background: var(--idea-bg); border: 1px solid var(--idea-border); border-radius: 8px; padding: 12px 14px; font-size: 12.5px; color: var(--idea); line-height: 1.55; }
+.idea-effort { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 700; color: var(--orange); background: #fff; border: 1px solid var(--idea-border); border-radius: 4px; padding: 2px 8px; }
+
+/* CARD FOOTER */
+.card-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 4px; border-top: 1px solid var(--border); margin-top: auto; }
+.card-source { font-size: 11px; color: var(--muted); font-style: italic; }
+.card-link { font-size: 11.5px; font-weight: 600; color: var(--blue); text-decoration: none; white-space: nowrap; }
+.card-link:hover { text-decoration: underline; }
+
+/* EN BREF */
+.exec-inpage { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 18px 22px 20px; margin: 24px 0 8px; box-shadow: 0 1px 6px rgba(13,34,64,.06); }
+.exec-inpage-label { font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.exec-inpage-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border-radius: 8px; overflow: hidden; }
+@media (max-width: 860px) { .exec-inpage-grid { grid-template-columns: repeat(2, 1fr); } }
+.exec-inpage-card { background: var(--card); padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 5px; text-decoration: none; transition: background .12s; }
+.exec-inpage-card:hover { background: var(--bg); }
+.eip-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .4px; border-radius: 3px; padding: 2px 6px; margin-bottom: 3px; width: fit-content; }
+.eip-red    { background: var(--red-pale);    color: var(--red); }
+.eip-blue   { background: var(--blue-pale);   color: var(--blue); }
+.eip-green  { background: var(--green-pale);  color: var(--green); }
+.eip-purple { background: var(--purple-pale); color: var(--purple); }
+.eip-teal   { background: var(--teal-pale);   color: var(--teal); }
+.eip-chiffre { font-size: 20px; font-weight: 900; color: var(--navy); line-height: 1.1; letter-spacing: -.3px; }
+.eip-title { font-size: 11.5px; font-weight: 600; color: var(--text); line-height: 1.35; }
+.eip-sub { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+/* ED NAV */
+.ed-nav { background: rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.1); display: flex; align-items: center; justify-content: space-between; padding: 8px 20px; font-size: 12px; color: rgba(255,255,255,.5); }
+.ed-nav-center { color: #fff; font-weight: 700; }
+.ed-nav-prev, .ed-nav-next { color: rgba(255,255,255,.5); text-decoration: none; transition: color .15s; }
+.ed-nav-prev:hover, .ed-nav-next:hover { color: #fff; }
+
+/* BENCHMARK */
+.benchmark-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 16px; }
+.benchmark-header { background: linear-gradient(135deg, #0d2240 0%, #164e63 100%); border-radius: 12px 12px 0 0; padding: 24px 28px; color: white; }
+.benchmark-header h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+.benchmark-header p { font-size: 13px; color: rgba(255,255,255,.7); }
+.benchmark-body { padding: 20px 24px; }
+.actor-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.actor-row:last-child { border-bottom: none; }
+.actor-logo { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
+.actor-info { flex: 1; }
+.actor-name { font-size: 13px; font-weight: 700; color: var(--text); }
+.actor-action { font-size: 12.5px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+.actor-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 5px; }
+.actor-tag { font-size: 10.5px; font-weight: 600; border-radius: 3px; padding: 1px 6px; }
+.at-green { background: var(--green-pale); color: var(--green); }
+.at-blue { background: var(--blue-pale); color: var(--blue); }
+.at-orange { background: var(--orange-pale); color: var(--orange); }
+.at-purple { background: var(--purple-pale); color: var(--purple); }
+.at-red { background: var(--red-pale); color: var(--red); }
+
+/* NOTE BOX */
+.note-box { background: var(--blue-pale); border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #1e40af; line-height: 1.6; margin-bottom: 16px; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .header { padding: 20px 16px 18px; }
+  .main { padding: 18px 12px 40px; }
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<div class="topnav">
+  <span class="topnav-brand">Veille Prévention</span>
+  <a href="#signaux" class="active">① Signaux forts</a>
+  <a href="#solutions">② Équipements & solutions</a>
+  <a href="#marche">③ Mouvements du marché</a>
+  <a href="#communication">④ Communication concurrents</a>
+  <a href="#reglementation">⑤ Réglementation</a>
+</div>
+
+<!-- ED NAV -->
+<div class="ed-nav" style="background:#0d2240;">
+  <a href="edition-1.html" class="ed-nav-prev">← Édition N°1</a>
+  <span class="ed-nav-center">Édition N°2 · Juin 2026</span>
+  <span class="ed-nav-next" style="opacity:.3">Édition N°3 →</span>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-row">
+    <div>
+      <div class="header-eyebrow">Veille Prévention · Directions Produit, Marché & Marketing</div>
+      <h1>Prévention des risques particuliers</h1>
+      <div class="header-sub">Équipements · Partenariats · Innovations · Réglementation &nbsp;|&nbsp; Auto · MRH · Santé · Prévoyance</div>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-edition">Édition N°2 — Juin 2026</span>
+      <span class="badge badge-next">Prochaine mise à jour : 1er juillet 2026</span>
+    </div>
+  </div>
+  <div class="intensity-bar">
+    <span class="intensity-label">Intensité</span>
+    <div class="intensity-dots">
+      <div class="intensity-dot on"></div>
+      <div class="intensity-dot on"></div>
+      <div class="intensity-dot on"></div>
+      <div class="intensity-dot on"></div>
+      <div class="intensity-dot"></div>
+    </div>
+    <span class="intensity-text">Très élevée — Sinistralité grêle record + signaux réglementaires majeurs</span>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- EN BREF -->
+<div class="exec-inpage">
+  <div class="exec-inpage-label">En bref — 4 faits du mois</div>
+  <div class="exec-inpage-grid">
+
+    <a href="#signaux" class="exec-inpage-card">
+      <span class="eip-tag eip-red">① Signaux — Mai 2026</span>
+      <span class="eip-chiffre">150 000+</span>
+      <div class="eip-title">sinistres en 48h après les orages des 13-14 mai</div>
+      <div class="eip-sub">Grêle + vent + inondations — 800 M€ de dégâts dans le Sud-Est</div>
+    </a>
+
+    <a href="#marche" class="exec-inpage-card">
+      <span class="eip-tag eip-green">③ Marché — Jan. 2026</span>
+      <span class="eip-chiffre">120 M€</span>
+      <div class="eip-title">Cat Bond grêle émis par Groupama — première mondiale sur les marchés ILS</div>
+      <div class="eip-sub">Quercus II Re DAC — 2 ans, déclenche si sinistralité grêle &gt; 470 M€/an</div>
+    </a>
+
+    <a href="#reglementation" class="exec-inpage-card">
+      <span class="eip-tag eip-teal">⑤ Réglementation — 2026</span>
+      <span class="eip-chiffre">+47 %</span>
+      <div class="eip-title">à +85 % : projection CCR des sinistres Cat Nat d'ici 2050</div>
+      <div class="eip-sub">Rapport CCR 2026 — 14 recommandations pour réformer le régime</div>
+    </a>
+
+    <a href="#solutions" class="exec-inpage-card">
+      <span class="eip-tag eip-purple">② Solutions — Mars 2026</span>
+      <span class="eip-chiffre">100 M€</span>
+      <div class="eip-title">levée de fonds Alan — accélération santé/prévoyance digital</div>
+      <div class="eip-sub">La licorne confirme son leadership InsurTech santé en France</div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ① SIGNAUX FORTS -->
+<div id="signaux" class="section-head">
+  <div class="section-num num-red">①</div>
+  <h2>Signaux forts de la période</h2>
+  <span class="section-desc">— les faits qui comptent pour la prévention</span>
+  <span class="section-count">4 signaux</span>
+</div>
+
+<div class="grid-3">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-signal">Signal fort</span><span class="tag t-risk-grele">Grêle</span><span class="tag t-risk-inond">Inondation</span></div>
+      <span class="card-date">13-14 mai 2026</span>
+    </div>
+    <div class="card-title">Orages du 13-14 mai 2026 : 150 000 sinistres en 48h, une onde de choc pour les assureurs</div>
+    <div class="card-body">Les violents orages qui ont frappé la France les 13 et 14 mai 2026 constituent l'un des épisodes les plus coûteux du printemps. Grêlons de la taille de balles de golf, vents à plus de 120 km/h et inondations éclairs ont touché en priorité le Hérault, le Gard, l'Ardèche et la Drôme. Plus de 150 000 déclarations de sinistres enregistrées en 48h. Dégâts estimés à plus de 800 M€ selon France Assureurs. Sur le mois de mai, le coût total des orages dépasse 1,2 Md€ toutes branches confondues (auto + habitation).</div>
+    <div class="stat-box red"><strong>60 %</strong> des sinistres : toitures endommagées — <strong>25 %</strong> : véhicules — <strong>15 %</strong> : inondations de sous-sols</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Déclencher un "protocole grêle" automatisé lors des épisodes orange/rouge météo : SMS préventif aux assurés dans la zone (mise à l'abri du véhicule, sécurisation ouvertures), puis ouverture fast-track de déclaration post-événement. Coût marginal, fort signal de service.
+      <span class="idea-effort">POC léger — 1 à 2 mois</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">FranceTransactions / LeComparateurAssurance / L'Argus</span>
+      <a class="card-link" href="https://www.francetransactions.com/amp/actus/assurances/assurances-le-cout-des-degats-causes-par-les-orages-depasse-1-2-milliard-d.html" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-signal">Signal fort</span><span class="tag t-risk-grele">Grêle</span><span class="tag t-risk-auto">Auto</span></div>
+      <span class="card-date">Janvier 2026</span>
+    </div>
+    <div class="card-title">Nouvelles exclusions climatiques habitation et auto : le reste à charge explose</div>
+    <div class="card-body">Depuis janvier 2026, la majorité des assureurs français ont introduit de nouvelles exclusions climatiques dans leurs contrats habitation. La plus significative : l'exclusion de la grêle sur les véhicules de plus de 5 ans. Des assurés sinistrés par les orages de mai se retrouvent avec des devis de carrosserie entièrement à leur charge, pouvant atteindre plusieurs milliers d'euros. Le reste à charge moyen après sinistre climatique a augmenté de 150 % par rapport à 2023. Sujet de sensibilité client majeur.</div>
+    <div class="stat-box orange"><strong>+150 %</strong> de reste à charge moyen après sinistre climatique depuis 2023 — tension croissante entre assurés et assureurs</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Proposer une option "couverture grêle étendue" (y compris véhicules anciens) tarifée au risque réel selon zone météo et exposition historique. Segmentation fine plutôt qu'exclusion brutale — levier de différenciation commerciale et de rétention.
+      <span class="idea-effort">Projet moyen — tarification à affiner</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">LeBlogFinance / LeComparateurAssurance / FranceInfo</span>
+      <a class="card-link" href="https://leblogfinance.com/2026/05/assurance-habitation-les-nouvelles-exclusions-climatiques-qui-changent-tout-apres-les-orages-de-mai-2026.html" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-signal">Signal fort</span><span class="tag t-risk-rga">Sécheresse / RGA</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Nouveau cadre d'indemnisation RGA 2026 : obligation d'information du vendeur renforcée</div>
+    <div class="card-body">Un décret de février 2024, pleinement applicable en 2026, impose désormais au vendeur d'un bien d'informer l'acquéreur lorsqu'il dispose d'un rapport d'expertise transmis par son assureur après un sinistre sécheresse. Il doit préciser les travaux préconisés non réalisés et les indemnisations non encore engagées. Ce mécanisme crée un lien direct entre historique sinistre et transaction immobilière — et renforce la valeur du diagnostic préventif pour les assureurs, qui peuvent le formaliser dès le règlement du sinistre.</div>
+    <div class="stat-box orange"><strong>54 %</strong> du parc de maisons individuelles exposé à l'aléa RGA moyen ou fort — potentiel de service préventif considérable</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Créer un "passeport RGA" remis à l'assuré à la clôture de chaque sinistre sécheresse : synthèse de l'expertise, recommandations travaux, état de l'indemnisation. Document réutilisable à la revente du bien et valorisable comme preuve de suivi préventif.
+      <span class="idea-effort">POC léger — process interne + document PDF</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">VotreAssurance.fr / Décret n°2024-XXX / Géorisques</span>
+      <a class="card-link" href="https://www.votre-assurance.fr/maison/secheresse-fissures-maison-assurance-indemnisation-2026.html" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-signal">Signal fort</span><span class="tag t-risk-sante">Santé</span><span class="tag t-tech">InsurTech</span></div>
+      <span class="card-date">Mars 2026</span>
+    </div>
+    <div class="card-title">Alan lève 100 M€ : la prévention santé digitale passe à l'échelle internationale</div>
+    <div class="card-body">La néo-assurance Alan a révélé le 11 mars 2026 une levée de fonds de 100 millions d'euros pour accélérer son internationalisation et consolider son modèle de prévention santé. Alan articule son offre autour de la prévention proactive : coaching bien-être, mental health, dépistages précoces, téléconsultation. Ce financement confirme la thèse que la prévention santé digitale est un axe d'investissement majeur, y compris pour les assureurs traditionnels contraints de répondre à cette montée en puissance.</div>
+    <div class="stat-box blue">Alan : déjà plus de <strong>500 000 membres</strong> en France — modèle de prévention intégrée qui redéfinit les standards du marché santé/prévoyance</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Identifier les 3 à 5 fonctionnalités de prévention santé d'Alan les plus citées par les assurés pour orienter la feuille de route produit : dépistage, coaching, accès psy en ligne, prévention chronique. Se positionner sur l'un de ces axes avant qu'il devienne standard.
+      <span class="idea-effort">Benchmark rapide — 2 à 3 semaines</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">L'Assurance en Mouvement / BPI France / Alan</span>
+      <a class="card-link" href="https://bigmedia.bpifrance.fr/nos-dossiers/assurtech-ces-startups-qui-reinventent-lassurance" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ② ÉQUIPEMENTS & SOLUTIONS -->
+<div id="solutions" class="section-head">
+  <div class="section-num num-blue">②</div>
+  <h2>Nouveautés équipements & solutions</h2>
+  <span class="section-desc">— ce qui arrive sur le marché, par type de risque</span>
+  <span class="section-count">4 fiches</span>
+</div>
+
+<div class="grid-3">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-risk-grele">Grêle</span><span class="tag t-risk-auto">Auto</span><span class="tag t-equip">Protection</span></div>
+      <span class="card-date">Printemps 2026</span>
+    </div>
+    <div class="card-title">Protection véhicule anti-grêle : regain d'intérêt fort après les orages de mai</div>
+    <div class="card-body">Les orages de mai 2026 ont déclenché une forte demande sur les solutions de protection automobile : housses anti-grêle multicouches (néoprène 4–8 mm, 30–100 €), filets textiles légers (La Fabrique à Filets, ~40 €), carports aluminium (300–3 000 €). Les recherches Google sur "bâche anti-grêle voiture" ont explosé post-événement. Les débosseleurs PDR (Paintless Dent Repair) sont saturés sur 4 à 6 semaines dans les zones touchées. Côté prévention assureur, aucune offre structurée n'existe encore pour inciter ou subventionner ces équipements.</div>
+    <div class="stat-box"><strong>Bâche anti-grêle</strong> : 30–100 € — protection efficace jusqu'à 3 cm de diamètre de grêlon — ROI positif dès le premier sinistre évité</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Proposer à la souscription ou au renouvellement auto une "offre prévention grêle" : bâche ou filet anti-grêle offert (coût ~40 €) avec un code promo carport partenaire. Message simple, visible, différenciant — notamment pour les assurés dans les zones orange/rouge récurrentes (Sud-Est, Île-de-France).
+      <span class="idea-effort">POC léger — partenariat fournisseur à négocier</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">La Fabrique à Filets / Zecarrossery / FranceInfo</span>
+      <a class="card-link" href="https://www.franceinfo.fr/environnement/evenements-meteorologiques-extremes/inondations-et-crues/intemperies-grele-inondations-les-tarifs-des-assurances-auto-en-hausse_7503883.html" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-risk-inond">Inondation</span><span class="tag t-risk-grele">Grêle</span><span class="tag t-tech">Outil digital</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Covéa lance "Bien Informé, Bien Assuré" (BIBA) : diagnostic risques climatiques par adresse — premier jalon d'un engagement pris en 2025</div>
+    <div class="card-body">En 2026, Covéa (MAAF, MMA, GMF) concrétise l'engagement pris en juin 2025 de consacrer 0,5 % de ses primes MRH à la prévention climatique en lançant l'outil "Bien Informé, Bien Assuré" (BIBA). En une page, chaque sociétaire accède à un diagnostic géolocalisé de son exposition aux aléas : inondation, sécheresse/RGA, feux de forêt, tempête, grêle. L'outil s'appuie sur les données Géorisques et Météo-France. Des guides pratiques de prévention sont intégrés directement dans l'interface. Première réalisation concrète de ce type à cette échelle en France.</div>
+    <div class="stat-box green">Outil gratuit pour les sociétaires MAAF / MMA / GMF — exposition climatique lisible en quelques secondes par adresse</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Développer un outil équivalent intégré dans l'espace client : diagnostic risques par adresse assuré, avec affichage de l'historique sinistralité locale et des équipements recommandés selon l'exposition. Croisement Géorisques + données portefeuille interne pour une personnalisation forte.
+      <span class="idea-effort">Projet moyen — API Géorisques + design UX à intégrer</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">Covéa / L'Argus de l'Assurance / NewsAssurancesPro</span>
+      <a class="card-link" href="https://www.covea.com/fr/actualites/covea-lance-bien-informe-bien-assure-outil-innovant-anticiper-risques-climatiques" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-risk-sante">Santé</span><span class="tag t-tech">Connecté</span><span class="tag t-equip">Prévention</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Santé connectée : les wearables IoT entrent dans les contrats — Dépist&vous comme modèle émergent</div>
+    <div class="card-body">En 2026, l'intégration d'objets de santé connectés dans les contrats devient une réalité commerciale. Les mutuelles seniors proposent des forfaits remboursant montres/bracelets connectés, oxymètres, tensiomètres. La plateforme Dépist&vous (Dr Charlotte Berthaut) offre un questionnaire de dépistage précoce des cancers selon les recommandations HAS, avec calendrier personnalisé. Elle est déjà intégrée dans l'offre d'assistance d'Euro-Assurance et proposée aux adhérents de la Mutuelle Complémentaire. Ce type d'outil illustre le glissement de la prévoyance vers la prévention active.</div>
+    <div class="stat-box blue">Les assureurs santé investissent massivement : <strong>téléconsultation · coaching bien-être · dépistage précoce · mental health</strong> — les 4 piliers de la prévention santé 2026</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Intégrer un outil de dépistage structuré (type Dépist&vous ou similaire) dans l'espace client santé/prévoyance : questionnaire HAS, génération d'un calendrier de prévention personnalisé. Fort potentiel de différenciation sur les cibles seniors et actifs >45 ans. Partenariat ou développement propre à explorer.
+      <span class="idea-effort">POC moyen — partenariat plateforme + intégration app</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">L'Assurance en Mouvement / Mandalore Partners / Innovation Assurance</span>
+      <a class="card-link" href="https://www.lassuranceenmouvement.com/2026/05/20/sante-connectee-ce-que-les-assureurs-peuvent-anticiper" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-risk-auto">Auto</span><span class="tag t-tech">Télématique</span><span class="tag t-equip">Prévention active</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Télématique comportementale : GMF lance DrivMeUp', MAIF renforce "Conduite Intelligente" — la prévention auto par la donnée</div>
+    <div class="card-body">La prévention comportementale auto monte en puissance en 2026. GMF a lancé DrivMeUp', une app télématique ouverte à tous ses assurés : analyse du style de conduite, conseils personnalisés, challenges réguliers. MAIF renforce son programme "Conduite Intelligente" avec des réductions tarifaires jusqu'à 30 % après un an de conduite exemplaire. La logique : remplacer les critères statistiques (âge, zone) par la donnée comportementale réelle. Ces programmes créent une relation continue avec l'assuré entre deux sinistres — valeur considérable pour la fidélisation et la prévention.</div>
+    <div class="stat-box green">Jusqu'à <strong>−30 %</strong> sur la prime auto après 12 mois de conduite vertueuse (MAIF Conduite Intelligente) — et jusqu'à −50 % sur certains programmes européens</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Lancer ou renforcer un programme télématique comportemental auto, avec parcours gamifié (scores, badges, défis mensuels) et réduction de prime progressive. L'enjeu n'est pas seulement tarifaire : c'est le seul levier de prévention qui génère une interaction régulière avec l'assuré auto hors sinistre.
+      <span class="idea-effort">POC moyen — app mobile + partenaire télématique à sélectionner</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">DriveQuant Guide 2026 / Flotauto / GMF / MAIF</span>
+      <a class="card-link" href="https://blog.drivequant.com/fr/guide-ultime-assurance-auto-connectee" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ③ MOUVEMENTS DU MARCHÉ -->
+<div id="marche" class="section-head">
+  <div class="section-num num-green">③</div>
+  <h2>Mouvements du marché</h2>
+  <span class="section-desc">— partenariats, stratégies, modèles à observer</span>
+  <span class="section-count">3 mouvements</span>
+</div>
+
+<div class="grid-2">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-strategie">Innovation financière</span><span class="tag t-risk-grele">Grêle</span></div>
+      <span class="card-date">Janvier 2026</span>
+    </div>
+    <div class="card-title">Groupama émet le premier Cat Bond mondial dédié au risque grêle — 120 M€ sur les marchés ILS</div>
+    <div class="card-body">En janvier 2026, Groupama innove sur les marchés d'Insurance-Linked Securities (ILS) avec l'émission de Quercus II Re DAC : une obligation catastrophe de 120 M€ sur 2 ans, dédiée exclusivement au risque grêle en France (bâtiments et véhicules). C'est une première mondiale sur ce péril. Le mécanisme se déclenche si la sinistralité grêle annuelle du groupe dépasse 470 M€. La transaction a été structurée par Aon Securities et a attiré un large panel d'investisseurs ILS. Ce mouvement illustre comment les assureurs français commencent à transférer les risques climatiques les plus fréquents vers les marchés de capitaux — en complément de la réassurance traditionnelle.</div>
+    <div class="stat-box blue"><strong>120 M€</strong> levés sur les marchés ILS — Quercus II Re DAC, en vigueur du 1er jan. 2026 pour 2 ans — première mondiale sur le péril grêle</div>
+    <div class="idea-box">
+      <strong>💡 À surveiller</strong>
+      Ce mouvement pourrait préfigurer d'autres émissions Cat Bond sur des périls fréquents (dégâts des eaux, tempête). Il réduit la dépendance à la réassurance classique et stabilise le coût du risque — ce qui, à terme, peut créer de la marge pour financer des programmes de prévention. Un modèle à intégrer dans la réflexion sur la stratégie de transfert de risques.
+      <span class="idea-effort">Veille stratégique — Direction technique et financière</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">Groupama / L'Argus de l'Assurance / L'Assurance en Mouvement</span>
+      <a class="card-link" href="https://presse.groupama.com/actualites/groupama-innove-sur-les-marches-ils-avec-un-cat-bond-dedie-au-risque-grele-pour-proteger-sa-sinistralite-annuelle-c935b-55f34.html" target="_blank">Communiqué ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-strategie">Tarification</span><span class="tag t-risk-inond">Climatique</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Hausse tarifaire 2026 : auto +5 %, habitation +7-8 %, avec une dispersion croissante selon le risque climatique</div>
+    <div class="card-body">Les tarifs d'assurance auto et habitation poursuivent leur hausse en 2026 : +4,5 à +5,5 % en auto, +7 à +8 % en habitation. Mais la tendance de fond est plus structurelle : la disparité d'exposition climatique entre les biens assurés conduit à une dispersion croissante des hausses contrat par contrat. Les assureurs avancent vers une tarification au risque individuel plutôt qu'une mutualisation de zone. Ce mouvement est irréversible et appelle une stratégie de prévention différenciée selon l'exposition du bien.</div>
+    <div class="stat-box orange"><strong>+7 à +8 %</strong> en habitation en 2026 — avec une forte dispersion selon l'exposition climatique du bien assuré</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Intégrer l'exposition climatique de l'adresse dans le scoring tarifaire, couplée à une offre de prévention modulée selon le niveau de risque : plus le bien est exposé, plus l'offre préventive est proactive et visible. Transformer la contrainte tarifaire en opportunité de service.
+      <span class="idea-effort">Projet structurant — scoring + parcours client à re-designer</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">Planète CSCA / L'Argus de l'Assurance / Addactis</span>
+      <a class="card-link" href="https://www.argusdelassurance.com/assurance-dommages/auto/assurances-auto-et-habitation-les-hausses-de-tarifs-en-2026-varient-tres-fortement-d-un-assure-a-l-autre.237711" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-reg">Régime Cat Nat</span><span class="tag t-signal">Signal fort</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Cour des comptes vs CCR : deux visions du régime Cat Nat — la prévention en arbitre</div>
+    <div class="card-body">En 2026, deux institutions publient des visions divergentes sur l'avenir du régime d'indemnisation des catastrophes naturelles. La CCR propose 14 mesures pour le consolider, en insistant sur la prévention comme levier central. La Cour des comptes, elle, recommande de réduire le champ des périls couverts pour renforcer la robustesse financière du régime. L'enjeu : une partie des risques jusqu'ici mutualisés pourrait être renvoyée vers les assureurs privés ou les assurés eux-mêmes. Signal de réforme potentiellement majeure à horizon 2027-2028.</div>
+    <div class="stat-box red">CCR : coût Cat Nat pourrait augmenter de <strong>+47 à +85 %</strong> d'ici 2050 — la prévention est présentée comme le seul levier de maîtrise structurel</div>
+    <div class="idea-box">
+      <strong>💡 Idée à tester</strong>
+      Anticiper le scénario d'une réduction du champ Cat Nat : identifier quels périls pourraient sortir du régime, modéliser l'impact sur la sinistralité portefeuille, et commencer à concevoir des offres complémentaires ou des programmes de prévention ciblés sur ces risques.
+      <span class="idea-effort">Veille réglementaire — task force Produit + Actuariat</span>
+    </div>
+    <div class="card-foot">
+      <span class="card-source">CCR / Planète CSCA / L'Argus de l'Assurance</span>
+      <a class="card-link" href="https://www.planetecsca.fr/actualites/environnement-courtage-assurances/rapport-ccr-2026-regime-indemnisation-catastrophes-naturelles/" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ④ COMMUNICATION CONCURRENTS -->
+<div id="communication" class="section-head">
+  <div class="section-num num-purple">④</div>
+  <h2>Communication concurrents — Prévention sur les réseaux</h2>
+  <span class="section-desc">— comptes à surveiller & campagnes observées</span>
+</div>
+
+<style>
+.press-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin: 16px 0 24px; }
+.press-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; transition: box-shadow .15s; text-decoration: none; color: inherit; }
+.press-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.08); }
+.press-source { display: flex; align-items: center; gap: 8px; }
+.press-source-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.press-source-name { font-size: 10.5px; font-weight: 700; color: var(--muted); letter-spacing: .3px; text-transform: uppercase; }
+.press-date { font-size: 10.5px; color: var(--muted); margin-left: auto; }
+.press-title { font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.4; }
+.press-excerpt { font-size: 12px; color: var(--muted); line-height: 1.55; }
+.press-label { display: inline-block; font-size: 10px; font-weight: 700; border-radius: 3px; padding: 2px 6px; margin-top: 2px; width: fit-content; }
+.pl-covea { background: var(--red-pale); color: var(--red); }
+.pl-maif { background: var(--orange-pale); color: var(--orange); }
+.pl-groupama { background: var(--purple-pale); color: var(--purple); }
+.pl-alan { background: var(--green-pale); color: var(--green); }
+.pl-argus { background: var(--blue-pale); color: var(--blue); }
+</style>
+
+<div class="note-box">
+  <strong>Méthode :</strong> Cette section est alimentée par veille manuelle bimensuelle (recherche web + lecture des comptes publics et presse spécialisée). Elle n'est pas un outil de social listening automatisé — la profondeur des observations augmente au fil des éditions.
+</div>
+
+<!-- EXTRAITS PRESSE -->
+<div style="font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin: 20px 0 10px;">Extraits de presse — sources vérifiées</div>
+<div class="press-grid">
+
+  <a class="press-card" href="https://www.covea.com/fr/actualites/covea-lance-bien-informe-bien-assure-outil-innovant-anticiper-risques-climatiques" target="_blank">
+    <div class="press-source">
+      <div class="press-source-dot" style="background:#c0392b;"></div>
+      <span class="press-source-name">Covéa (communiqué officiel)</span>
+      <span class="press-date">2026</span>
+    </div>
+    <div class="press-title">« Covéa lance Bien Informé, Bien Assuré, un outil innovant pour anticiper les risques climatiques »</div>
+    <div class="press-excerpt">En une page, chaque sociétaire accède à un diagnostic géolocalisé de son exposition aux aléas climatiques actuels et futurs, accompagné de guides pratiques.</div>
+    <span class="press-label pl-covea">Covéa · BIBA · Prévention climatique</span>
+  </a>
+
+  <a class="press-card" href="https://www.argusdelassurance.com/green-assurance/risques-climatiques/assurance-auto-plus-de-13-500-declarations-de-sinistres-deja-recensees-par-covea-maif-et-macif-apres-l-orage-de-grele-en-ile-de-france.235521" target="_blank">
+    <div class="press-source">
+      <div class="press-source-dot" style="background:#1554a0;"></div>
+      <span class="press-source-name">L'Argus de l'Assurance</span>
+      <span class="press-date">2026</span>
+    </div>
+    <div class="press-title">« Orages de grêle à Paris : plus de 13 500 déclarations recensées par Covéa, MAIF et Macif »</div>
+    <div class="press-excerpt">Après l'orage de grêle en Île-de-France, Covéa et Macif anticipent ensemble plus de 20 000 déclarations. MAIF recense plus de 50 % de dossiers véhicules dans ses premières déclarations.</div>
+    <span class="press-label pl-argus">Covéa · MAIF · Macif · Grêle IDF</span>
+  </a>
+
+  <a class="press-card" href="https://presse.groupama.com/actualites/groupama-innove-sur-les-marches-ils-avec-un-cat-bond-dedie-au-risque-grele-pour-proteger-sa-sinistralite-annuelle-c935b-55f34.html" target="_blank">
+    <div class="press-source">
+      <div class="press-source-dot" style="background:#6d28d9;"></div>
+      <span class="press-source-name">Groupama (communiqué de presse)</span>
+      <span class="press-date">Janv. 2026</span>
+    </div>
+    <div class="press-title">« Groupama innove sur les marchés ILS avec un Cat Bond dédié au risque Grêle »</div>
+    <div class="press-excerpt">Quercus II Re DAC — 120 M€, durée 2 ans, première mondiale sur ce péril. Structuré par Aon Securities. Déclenche si la sinistralité grêle annuelle dépasse 470 M€.</div>
+    <span class="press-label pl-groupama">Groupama · Cat Bond · ILS · Grêle</span>
+  </a>
+
+  <a class="press-card" href="https://www.argusdelassurance.com/green-assurance/catastrophes-naturelles/tempete-goretti-groupama-covea-macif-maif-dressent-un-premier-bilan-des-dommages-assures.237981" target="_blank">
+    <div class="press-source">
+      <div class="press-source-dot" style="background:#1554a0;"></div>
+      <span class="press-source-name">L'Argus de l'Assurance</span>
+      <span class="press-date">2026</span>
+    </div>
+    <div class="press-title">« Tempête Goretti : Groupama, Covéa, Macif, Maif dressent un premier bilan des dommages assurés »</div>
+    <div class="press-excerpt">À noter : les 4 acteurs communiquent conjointement sur les sinistres d'un même épisode — un format de communication coordonné de place qui se répète sur chaque événement majeur.</div>
+    <span class="press-label pl-argus">Tempête Goretti · Communication sectorielle</span>
+  </a>
+
+  <a class="press-card" href="https://www.lassuranceenmouvement.com/2026/05/20/sante-connectee-ce-que-les-assureurs-peuvent-anticiper" target="_blank">
+    <div class="press-source">
+      <div class="press-source-dot" style="background:#1a9460;"></div>
+      <span class="press-source-name">L'Assurance en Mouvement</span>
+      <span class="press-date">20 mai 2026</span>
+    </div>
+    <div class="press-title">« Santé connectée : ce que les assureurs peuvent anticiper »</div>
+    <div class="press-excerpt">Les dispositifs médicaux connectés ne sont plus de simples gadgets — ils deviennent des outils de prévention et de suivi qui s'inscrivent dans la chaîne de valeur de l'assurance santé.</div>
+    <span class="press-label pl-alan">Santé connectée · Prévention · InsurTech</span>
+  </a>
+
+  <a class="press-card" href="https://www.maif.fr/conseils-prevention/risques-majeurs/orages-de-grele" target="_blank">
+    <div class="press-source">
+      <div class="press-source-dot" style="background:#d97706;"></div>
+      <span class="press-source-name">MAIF (contenu éditorial)</span>
+      <span class="press-date">Permanent</span>
+    </div>
+    <div class="press-title">« Orages de grêle — conseils et prévention » (page référence MAIF)</div>
+    <div class="press-excerpt">La MAIF maintient une page de prévention grêle régulièrement mise à jour, activée lors des épisodes météo. Format informatif / pédagogique, cohérent avec le positionnement mutualiste. Très partagée sur les réseaux lors des alertes.</div>
+    <span class="press-label pl-maif">MAIF · Prévention éditoriale · Grêle</span>
+  </a>
+
+</div>
+
+<!-- TABLEAU ACTEURS -->
+<div class="benchmark-box">
+  <div class="benchmark-header">
+    <h3>Qui a communiqué sur la prévention — mai–juin 2026</h3>
+    <p>Réaction aux orages de mai + prises de position climatique et financière</p>
+  </div>
+  <div class="benchmark-body">
+
+    <div class="actor-row">
+      <div class="actor-logo" style="background:#fdecea; color:#c0392b;">CO</div>
+      <div class="actor-info">
+        <div class="actor-name">Covéa (MAAF / MMA / GMF)</div>
+        <div class="actor-action">Le plus actif du mois. Lancement officiel de l'outil BIBA avec communiqué corporate, couverture presse large (L'Argus, NewsAssurancesPro, Tripalio). Bilan sinistres grêle publié conjointement avec MAIF et Macif. Positionnement le plus structuré du marché sur la prévention climatique. <a href="https://www.covea.com/fr/actualites/covea-lance-bien-informe-bien-assure-outil-innovant-anticiper-risques-climatiques" target="_blank" style="color:var(--blue); font-size:11.5px;">→ Voir le communiqué</a></div>
+        <div class="actor-tags">
+          <span class="actor-tag at-green">Outil digital BIBA</span>
+          <span class="actor-tag at-blue">Bilan sinistres grêle</span>
+          <span class="actor-tag at-green">Prévention climatique</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actor-row">
+      <div class="actor-logo" style="background:#ede9fe; color:#5b21b6;">GR</div>
+      <div class="actor-info">
+        <div class="actor-name">Groupama</div>
+        <div class="actor-action">Double communication ce mois-ci : participation au bilan sinistres tempête Goretti (Covéa/Macif/MAIF/Groupama), et surtout visibilité forte dans la presse spécialisée sur le Cat Bond grêle Quercus II Re DAC. Communication orientée investisseurs et marché de la réassurance — peu grand public, mais forte crédibilité technique. <a href="https://presse.groupama.com/actualites/groupama-innove-sur-les-marches-ils-avec-un-cat-bond-dedie-au-risque-grele-pour-proteger-sa-sinistralite-annuelle-c935b-55f34.html" target="_blank" style="color:var(--blue); font-size:11.5px;">→ Voir le communiqué</a></div>
+        <div class="actor-tags">
+          <span class="actor-tag at-purple">Cat Bond grêle — ILS</span>
+          <span class="actor-tag at-blue">Bilan sinistres Goretti</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actor-row">
+      <div class="actor-logo" style="background:#d1fae5; color:#065f46;">AL</div>
+      <div class="actor-info">
+        <div class="actor-name">Alan</div>
+        <div class="actor-action">Activation médiatique autour de la levée de 100 M€ (mars 2026). Plusieurs interviews du CEO Jean-Charles Samuelian-Werve dans la presse économique, positionnant Alan comme "la prévention santé au cœur de l'assurance". Contenu éditorial régulier sur le bien-être mental et le dépistage. La marque communique peu sur les risques naturels — son terrain est exclusivement santé/prévoyance. <a href="https://bigmedia.bpifrance.fr/nos-dossiers/assurtech-ces-startups-qui-reinventent-lassurance" target="_blank" style="color:var(--blue); font-size:11.5px;">→ Dossier BPI France</a></div>
+        <div class="actor-tags">
+          <span class="actor-tag at-green">Prévention santé</span>
+          <span class="actor-tag at-purple">Thought leadership</span>
+          <span class="actor-tag at-blue">100 M€ levée</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actor-row">
+      <div class="actor-logo" style="background:#fef9c3; color:#854d0e;">MA</div>
+      <div class="actor-info">
+        <div class="actor-name">MAIF</div>
+        <div class="actor-action">Activation post-sinistres grêle IDF (bilan partagé avec Covéa/Macif). Page de prévention grêle remontée dans les résultats de recherche lors des alertes météo. Communication éditoriale régulière sur les risques climatiques, ton pédagogique et mutualiste. Pas d'annonce produit structurelle ce mois-ci. <a href="https://www.maif.fr/conseils-prevention/risques-majeurs/orages-de-grele" target="_blank" style="color:var(--blue); font-size:11.5px;">→ Page prévention grêle</a></div>
+        <div class="actor-tags">
+          <span class="actor-tag at-green">Prévention éditoriale</span>
+          <span class="actor-tag at-blue">Bilan sinistres grêle</span>
+          <span class="actor-tag at-purple">Positionnement mutualiste</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="actor-row">
+      <div class="actor-logo" style="background:#dbeafe; color:#1e40af;">AX</div>
+      <div class="actor-info">
+        <div class="actor-name">AXA France</div>
+        <div class="actor-action">Communication réactive post-orages de mai : activation du contenu "Que faire après un sinistre grêle" sur son site, partage sur LinkedIn et Twitter/X. Rappel du partenariat avec Somfy. Pas de nouvelle initiative structurelle annoncée. Posture attendue d'un leader : discret mais présent sur les fondamentaux.</div>
+        <div class="actor-tags">
+          <span class="actor-tag at-orange">Communication réactive</span>
+          <span class="actor-tag at-blue">Partenariat Somfy</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="note-box" style="font-size:12px; margin-top: 8px;">
+  <strong>À surveiller pour l'édition 3 :</strong> Allianz (suite du partenariat Homiris, renouvellement fin 2026), Generali (investissement AI6 Technologies — IA prévention sinistres climatiques), MMA (communication propre sur BIBA, distincte de Covéa corporate), Société Générale Assurances (positionnement banque-assurance sur la prévention habitat).
+</div>
+
+<!-- ⑤ RÉGLEMENTATION -->
+<div id="reglementation" class="section-head">
+  <div class="section-num num-teal">⑤</div>
+  <h2>Réglementation</h2>
+  <span class="section-desc">— ce qui change, et ce que ça implique concrètement</span>
+  <span class="section-count">3 évolutions</span>
+</div>
+
+<div class="grid-3">
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-reg">Réglementation</span><span class="tag t-risk-inond">Cat Nat</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Rapport CCR 2026 : 14 mesures pour consolider le régime Cat Nat, la prévention comme priorité n°1</div>
+    <div class="card-body">Dans son quatrième rapport annuel au ministre de l'Économie, la CCR propose 14 mesures pour renforcer le régime d'indemnisation des catastrophes naturelles face à l'intensification climatique. Parmi les priorités : renforcer les plans de prévention des risques (PPR), moduler les franchises en fonction des mesures de prévention prises par les assurés et les collectivités, et adapter la tarification au risque réel. La CCR insiste : sans renforcement de la prévention, les coûts du régime pourraient augmenter de 47 % à 85 % d'ici 2050 selon les scénarios de réchauffement.</div>
+    <div class="stat-box"><strong>14 mesures</strong> proposées par la CCR — prévention et adaptation au cœur des recommandations — signal d'une réforme profonde à venir</div>
+    <div class="card-foot">
+      <span class="card-source">CCR / Planète CSCA</span>
+      <a class="card-link" href="https://www.ccr.fr/rapport-au-ministre-de-leconomie-des-finances-et-de-la-souverainete-industrielle-et-numerique-sur-le-regime-dindemnisation-des-catastrophes-naturelles-2026/" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-reg">Réglementation</span><span class="tag t-risk-inond">Inondation</span></div>
+      <span class="card-date">En vigueur depuis juil. 2025</span>
+    </div>
+    <div class="card-title">Modulation de franchise collectivités : les communes non couvertes par un PPR payent plus cher</div>
+    <div class="card-body">Un arrêté du 1er juillet 2025 est pleinement en vigueur. Il instaure une modulation de la franchise Cat Nat pour les collectivités territoriales en fonction de l'existence et de l'application de mesures de prévention des risques. Les communes sans PPR approuvé, ou dont le plan n'est pas respecté, voient leur franchise augmenter significativement après plusieurs arrêtés de catastrophe naturelle successifs. Ce mécanisme pousse les collectivités à agir — et renforce indirectement la valeur des diagnostics et des équipements préventifs pour les particuliers situés dans ces zones.</div>
+    <div class="stat-box orange">Signal indirect fort : plus les collectivités investissent en prévention, plus les franchises des assurés sur leur territoire sont maîtrisées — lien prévention locale / coût assuré</div>
+    <div class="card-foot">
+      <span class="card-source">Légifrance / France Assureurs</span>
+      <a class="card-link" href="https://www.franceassureurs.fr/risques-climatiques-et-assurance/" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="tags"><span class="tag t-reg">Réglementation</span><span class="tag t-risk-auto">Auto</span></div>
+      <span class="card-date">2026</span>
+    </div>
+    <div class="card-title">Sécurité routière 2026 : contrôle de l'assurance systématique pour tout excès de vitesse ≥ 50 km/h</div>
+    <div class="card-body">La Délégation interministérielle à la Sécurité Routière fait de la lutte contre la conduite sans assurance une priorité 2026. Désormais, pour tout véhicule flashé en excès de vitesse supérieur ou égal à 50 km/h, le contrôle de l'assurance est systématique. Ce dispositif renforce la détection des conducteurs non assurés — un segment à risque élevé de sinistralité — et s'articule avec les outils de télématique comportementale (prévention auto, usage de la donnée conduite).</div>
+    <div class="stat-box blue">Fraude assurance auto détectée : <strong>237 M€ en 2023</strong> (+26 % vs 2022) — la lutte contre la conduite sans assurance est complémentaire des actions de prévention comportementale</div>
+    <div class="card-foot">
+      <span class="card-source">SMA BTP / Délégation interministérielle Sécurité Routière</span>
+      <a class="card-link" href="https://www.smabtp.fr/sma/assurance/toutes-les-actualites/securite-routiere--ce-qui-change-concretement-en-2026" target="_blank">Lire ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+  <div style="font-size: 11.5px; color: var(--muted);">
+    Veille Prévention · Édition N°2 · Juin 2026<br>
+    Usage interne — Directions Produit, Marché & Marketing<br>
+    <em>Sources : France Assureurs, CCR, L'Argus de l'Assurance, Covéa, L'Assurance en Mouvement, Planète CSCA, Mandalore Partners, BPI France.</em>
+  </div>
+  <div style="display: flex; gap: 10px; flex-shrink: 0;">
+    <a href="edition-1.html" style="font-size: 12px; font-weight: 600; color: var(--blue); text-decoration: none; border: 1px solid var(--border); padding: 7px 14px; border-radius: 7px;">← Édition N°1</a>
+    <span style="font-size: 12px; font-weight: 600; color: var(--muted); border: 1px solid var(--border); padding: 7px 14px; border-radius: 7px; opacity: .5;">Édition N°3 →</span>
+  </div>
+</div>
+
+</div><!-- /main -->
+</body>
+</html>
